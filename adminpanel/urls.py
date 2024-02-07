@@ -6,4 +6,5 @@ urlpatterns = [
     path('', views.index, name="index"),
     path('profile', views.profile, name="profile"),
     path('table', views.table, name="table"),
+    path('addtag', views.addtag, name="addtag"),
 ]

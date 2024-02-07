@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'techinteract.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'techinteract',
+        'NAME': 'techInteract',
         'USER': 'postgres',
         'PASSWORD': 'avnish18',
         'HOST': 'localhost'

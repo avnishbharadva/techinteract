@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
-from .models import User
+from .models import Users
+from django.contrib.auth.models import User,auth
 
 # Create your views here.
 
@@ -20,16 +21,18 @@ def register(request):
         profile_pic = request.FILES.get('profile_pic')
 
         if password==password_repeat:
-            if User.objects.filter(username=username).exists():
+            if Users.objects.filter(username=username).exists():
                 print("Username Already Taken")
                 messages.info(request, 'Username Already Taken')
                 return redirect('register')
-            elif User.objects.filter(email=email).exists():
+            elif Users.objects.filter(email=email).exists():
                 print("Email Already Taken")
                 messages.info(request, 'Email Already Taken')
                 return redirect('register')
             else:
-                user = User.objects.create(first_name=first_name,last_name=last_name,username=username,email=email,password=password,profile_pic=profile_pic)
+                users = Users.objects.create(first_name=first_name,last_name=last_name,username=username,email=email,password=password,profile_pic=profile_pic)
+                users.save()
+                user = User.objects.create_user(first_name=first_name,last_name=last_name,username=username,email=email,password=password)
                 user.save()
                 print("User Added Successfully")
                 return redirect('/')
@@ -46,7 +49,10 @@ def login(request):
         email = request.POST['email']
         password = request.POST['password']
 
-        if User.objects.filter(email=email).exists() and User.objects.filter(password=password).exists():
+        user = auth.authenticate(email=email,password=password)
+
+        if user is not None:
+            auth.login(request, user)
             print("Login Success")
             return redirect('/')
         else:

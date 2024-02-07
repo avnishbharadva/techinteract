@@ -224,20 +224,19 @@
                                     </div>
                                     <div class="card shadow">
                                         <div class="card-header py-3">
-                                            <p class="text-primary m-0 fw-bold">Contact Settings</p>
+                                            <p class="text-primary m-0 fw-bold">Add Tag</p>
                                         </div>
                                         <div class="card-body">
-                                            <form>
-                                                <div class="mb-3"><label class="form-label" for="address"><strong>Address</strong></label><input class="form-control" type="text" id="address" placeholder="Sunset Blvd, 38" name="address"></div>
-                                                <div class="row">
+                                            <form action="addtag" method="post">
+                                                {% csrf_token %}
+                                                <div class="mb-3"><label class="form-label" for="tag_name"><strong>Tag Name</strong></label><input class="form-control" type="text" id="tag_name" placeholder="Html" name="tag_name" required></div>
+                                                
                                                     <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="city"><strong>City</strong></label><input class="form-control" type="text" id="city" placeholder="Los Angeles" name="city"></div>
+                                                        <div class="mb-3"><label class="form-label" for="tag_desc"><strong>Tag Description</strong></label><input class="form-control" type="text" id="tag_desc" placeholder="The HyperText Markup Language or HTML is the standard markup language for documents designed to be displayed in a web browser. It defines the content and structure of web content. It is often assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript." name="tag_desc" required></div>
                                                     </div>
-                                                    <div class="col">
-                                                        <div class="mb-3"><label class="form-label" for="country"><strong>Country</strong></label><input class="form-control" type="text" id="country" placeholder="USA" name="country"></div>
-                                                    </div>
-                                                </div>
-                                                <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Save&nbsp;Settings</button></div>
+                                                    
+                                               
+                                                <div class="mb-3"><input class="btn btn-primary btn-sm" type="submit" value="Save"></div>
                                             </form>
                                         </div>
                                     </div>
