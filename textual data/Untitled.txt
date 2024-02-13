@@ -1,0 +1,1 @@
+export M2_HOME="$PATH:/User/srajveersinh.mandora/Documents/Mca SEM 2/Advance java/installation/apache-maven-3.9.6"
