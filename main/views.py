@@ -1,8 +1,10 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
 from .models import Users
-from django.contrib.auth.models import User,auth
-
+from adminpanel.models import Tag
+from django.contrib.auth.models import User
+# from django.contrib.auth import authenticate,login,logout
+from django.contrib import auth
 # Create your views here.
 
 def index(request):
@@ -46,11 +48,13 @@ def register(request):
 def login(request):
 
     if request.method == 'POST':
-        email = request.POST['email']
+        username = request.POST['username']
         password = request.POST['password']
 
-        user = auth.authenticate(email=email,password=password)
-
+        print(username,password)
+        user = auth.authenticate(request, username=username, password=password)
+        # user = auth.authenticate(request,email=email,password=password)
+        print(user)
         if user is not None:
             auth.login(request, user)
             print("Login Success")
@@ -65,3 +69,8 @@ def logout(request):
 
     auth.logout(request)
     return redirect('/')
+
+def add_post(request):
+
+    tags = Tag.objects.all()
+    return render(request, 'add_post.html',{'tags':tags})
