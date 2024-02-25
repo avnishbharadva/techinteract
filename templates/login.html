@@ -1,8 +1,5 @@
-{% extends 'base.html' %}
-
 {% load static %}
 
-{% block content %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,63 +7,85 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Login - TechInteract</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"> -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i&amp;display=swap">
     <link rel="stylesheet" href="{% static 'assets/fonts/fontawesome-all.min.css' %}">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="bg-gradient-primary">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-9 col-lg-12 col-xl-10">
-                <div class="card shadow-lg o-hidden border-0 my-5">
-                    <div class="card-body p-0">
-                        <div class="row">
-                            <div class="col-lg-6 d-none d-lg-flex">
-                                <div class="flex-grow-1 bg-login-image">
-                                    <img src="https://source.unsplash.com/530x550/?coding" alt="">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="p-5">
-                                    <div class="text-center">
-                                        <h4 class="text-dark mb-4">Welcome Back!</h4>
-                                    </div>
-                                    <form class="user" action="login" method="post">
-                                        {% csrf_token %}
-                                        <div class="mb-3"><input class="form-control form-control-user" type="text" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Username..." name="username" required></div>
-                                        <div class="mb-3"><input class="form-control form-control-user" type="password" id="exampleInputPassword" placeholder="Password" name="password" required></div>
-                                        <div class="mb-3">
-                                            <div class="custom-control custom-checkbox small">
-                                                <div class="form-check"><input class="form-check-input custom-control-input" type="checkbox" id="formCheck-1"><label class="form-check-label custom-control-label" for="formCheck-1">Remember Me</label></div>
-                                            </div>
-                                        </div><input class="btn btn-primary d-block btn-user w-100" type="submit" value="Login">
-                                        <hr><a class="btn btn-primary d-block btn-google btn-user w-100 mb-2" role="button"><i class="fab fa-google"></i>&nbsp; Login with Google</a><a class="btn btn-primary d-block btn-facebook btn-user w-100" role="button"><i class="fab fa-facebook-f"></i>&nbsp; Login with Facebook</a>
-                                        <hr>
-                                    </form>
-                                    <div class="text-center"><a class="small" href="forgot-password.html">Forgot Password?</a></div>
-                                    <div class="text-center"><a class="small" href="register">Create an Account!</a></div>
-                                    <div class="text-center">
-                                        {% for message in messages %}
-                                            {{ message }}
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                            </div>
+    <!--
+  Heads up! 👋
+
+  Plugins:
+    - @tailwindcss/forms
+-->
+
+    <section class="bg-white">
+        <div class="lg:grid lg:min-h-screen lg:grid-cols-12">
+            <aside class="relative block h-16 lg:order-last lg:col-span-5 lg:h-full xl:col-span-6">
+                <img alt=""
+                    src="https://images.unsplash.com/photo-1605106702734-205df224ecce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                    class="absolute inset-0 h-full w-full object-cover" />
+            </aside>
+
+            <main
+                class="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:px-16 lg:py-12 xl:col-span-6">
+                <div class="max-w-xl lg:max-w-3xl">
+                    <a class="block text-blue-600" href="#">
+                        <span class="sr-only">Home</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                          </svg>
+                    </a>
+
+                    <h1 class="mt-6 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
+                        Welcome to TechInteract!
+                    </h1>
+
+                    <p class="mt-4 leading-relaxed text-gray-500">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi nam dolorum aliquam,
+                        quibusdam aperiam voluptatum.
+                    </p>
+
+                    <form action="login" method="post" class="user mt-8 grid grid-cols-6 gap-6">
+
+                        {% csrf_token %}
+                        <div class="col-span-6">
+                            <label for="Email" class="block text-sm font-medium text-gray-700"> Username </label>
+
+                            <input type="text" id="Email" name="username"
+                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
                         </div>
-                    </div>
+                        <div class="col-span-6">
+                            <label for="Email" class="block text-sm font-medium text-gray-700"> Password </label>
+
+                            <input type="password" id="Email" name="password"
+                                class="mt-1 w-full rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
+                        </div>
+
+                        <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
+                            <button type="submit"
+                                class="inline-block shrink-0 rounded-md border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white transition hover:bg-transparent hover:text-blue-600 focus:outline-none focus:ring active:text-blue-500">
+                                Login
+                            </button>
+
+                            <p class="mt-4 text-sm text-gray-500 sm:mt-0">
+                               New to TechInteract?
+                                <a href="register" class="text-gray-700 underline">Sign Up</a>.
+                            </p>
+                        </div>
+                    </form>
+                    {% for message in messages %}
+                    <p class="text-red-500"> {{ message }}</p>
+                    {% endfor %}
                 </div>
-            </div>
+            </main>
         </div>
-    </div>
-    <script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'assets/js/bs-init.js' %}"></script>
-    <script src="{% static 'assets/js/theme.js' %}"></script>
+    </section>
+
+   
 </body>
 
 </html>
-
-{% endblock %}
