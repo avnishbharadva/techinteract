@@ -1,4 +1,5 @@
 from django.db import models
+from adminpanel.models import Tag
 
 # Create your models here.
 
@@ -11,4 +12,12 @@ class Users(models.Model):
     password = models.TextField()
     profile_pic = models.ImageField(upload_to='user_profile')
     total_query = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+class Query(models.Model):
+
+    user_id = models.ForeignKey(Users, on_delete=models.CASCADE)
+    query = models.CharField(max_length=200)
+    desc = models.TextField()
+    tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
