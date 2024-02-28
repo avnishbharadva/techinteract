@@ -16,7 +16,7 @@ class Users(models.Model):
 
 class Query(models.Model):
 
-    user_id = models.ForeignKey(Users, on_delete=models.CASCADE)
+    user = models.ForeignKey(Users, on_delete=models.CASCADE)
     query = models.CharField(max_length=200)
     desc = models.TextField()
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)

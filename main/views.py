@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
-from .models import Users
+from .models import Users,Query
 from adminpanel.models import Tag
 from django.contrib.auth.models import User
 # from django.contrib.auth import authenticate,login,logout
@@ -72,5 +72,22 @@ def logout(request):
 
 def add_post(request):
 
-    tags = Tag.objects.all()
-    return render(request, 'add_post.html',{'tags':tags})
+    if request.method == 'POST':
+        user = request.user.id
+        query = request.POST['query']
+        desc = request.POST['desc']
+        tag_id = request.POST['tag']
+        tag = Tag.objects.get(id=tag_id)
+        print(user)
+        que = Query.objects.create(user_id=user,query=query,desc=desc,tag_id=tag.id)
+        print(que)
+        return redirect('add_post')
+    else:
+        tags = Tag.objects.all()
+        return render(request, 'add_post.html',{'tags':tags})
+    
+def view_question(request):
+
+    queries = Query.objects.select_related('tag','user').all()
+    print(queries[0].tag.id)
+    return render(request, 'questions.html', {'queries':queries})

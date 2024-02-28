@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+    {% for query in queries %}
+        <h2>{{query.query}}</h2>
+        <h4>{{query.desc}}</h4>
+        <h4>{{query.tag.tag_name}}</h4>
+        <h4>{{query.user.username}}</h4>
+        <h4>{{query.created_at}}</h4>
+    {% endfor%}
+
+{% endblock %}
+    
