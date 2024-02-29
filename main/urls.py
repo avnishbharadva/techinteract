@@ -8,4 +8,5 @@ urlpatterns = [
     path('logout', views.logout, name="logout"),
     path('add-post', views.add_post, name="add_post"),
     path('questions', views.view_question, name="view_question"),
+    path('question/<int:question_id>/', views.question_detail, name='question_detail'),
 ]

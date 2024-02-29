@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib import messages
 from .models import Users,Query
 from adminpanel.models import Tag
@@ -91,3 +91,7 @@ def view_question(request):
     queries = Query.objects.select_related('tag','user').all()
     print(queries[0].tag.id)
     return render(request, 'questions.html', {'queries':queries})
+
+def question_detail(request, question_id):
+    query = get_object_or_404(Query, id=question_id)
+    return render(request, 'question_detail.html', {'query': query})
