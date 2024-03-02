@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib import messages
-from .models import Users,Query
+from .models import Users,Query,Response
 from adminpanel.models import Tag
 from django.contrib.auth.models import User
 # from django.contrib.auth import authenticate,login,logout
@@ -109,3 +109,21 @@ def tag_detail(request, tag_id):
     queries = Query.objects.select_related('tag','user').filter(tag_id=tag_id)
     # print("Tag by Query : ",queries)
     return render(request, "query_by_tag.html", {'queries': queries})
+
+def add_response(request):
+
+    if request.method == 'POST':
+        user = request.user.id
+        query = request.POST['query']
+        response = request.POST['response']
+        query_id = request.POST['query']
+        query = Query.objects.get(id=query_id)
+        print(user)
+        print(query)
+        res = Response.objects.create(user_id=user,query_id=query.id,response=response)
+        print(res)
+        return redirect('/questions')
+    else:
+        print("Nothing")
+        # tags = Tag.objects.all()
+        # return render(request, 'add_post.html',{'tags':tags})

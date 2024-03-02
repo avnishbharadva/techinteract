@@ -21,3 +21,10 @@ class Query(models.Model):
     desc = models.TextField()
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+
+class Response(models.Model):
+
+    user = models.ForeignKey(Users, on_delete=models.CASCADE)
+    response = models.TextField()
+    query = models.ForeignKey(Query, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
