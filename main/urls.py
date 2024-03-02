@@ -9,4 +9,6 @@ urlpatterns = [
     path('add-post', views.add_post, name="add_post"),
     path('questions', views.view_question, name="view_question"),
     path('question/<int:question_id>/', views.question_detail, name='question_detail'),
+    path('tags', views.all_tags, name='all_tags'),
+    path('tag/<int:tag_id>', views.tag_detail, name="tag_detail"),
 ]

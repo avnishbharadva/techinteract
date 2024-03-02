@@ -89,9 +89,23 @@ def add_post(request):
 def view_question(request):
 
     queries = Query.objects.select_related('tag','user').all()
-    print(queries[0].tag.id)
+    # print(queries[0].tag.id)
     return render(request, 'questions.html', {'queries':queries})
 
 def question_detail(request, question_id):
-    query = get_object_or_404(Query, id=question_id)
+
+    query = Query.objects.select_related('tag','user').get(id=question_id)
+    # print(query.tag)
+    # query = get_object_or_404(Query, id=question_id)
     return render(request, 'question_detail.html', {'query': query})
+
+def all_tags(request):
+
+    tags = Tag.objects.all()
+    return render(request, 'tags.html', {'tags':tags})
+
+def tag_detail(request, tag_id):
+
+    queries = Query.objects.select_related('tag','user').filter(tag_id=tag_id)
+    # print("Tag by Query : ",queries)
+    return render(request, "query_by_tag.html", {'queries': queries})

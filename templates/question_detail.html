@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    
+
+<div class="query">
     <h2>{{query.query}}</h2>
     <h3>{{query.desc}}</h3>
-    <!-- <h3>{{query.tag_id}}</h3> -->
+    <h3>{{query.tag.tag_name}}</h3>
+    <h3>{{query.user.username}}</h3>
+    <h3>{{query.created_at}}</h3>
+</div>
 
 {% endblock %}

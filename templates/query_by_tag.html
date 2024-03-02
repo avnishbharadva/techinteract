@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+    {% for query in queries %}
+    <div class="tag_query">
+        <a href="{% url 'question_detail' question_id=query.id %}">
+            <h2>{{query.query}}</h2>
+            <h3>{{query.desc}}</h3>
+        </a>
+        <h3>{{query.tag.tag_name}}</h3>
+        <h3>{{query.user.username}}</h3>
+        <h3>{{query.created_at}}</h3>
+    </div>
+    {% endfor %}
+
+{% endblock %}    
