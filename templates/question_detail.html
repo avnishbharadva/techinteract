@@ -37,6 +37,8 @@
       </div>
     </div>
 
+    {% for response in responses %}
+
  <!-- Answers -->
  <div class="bg-white p-4 rounded shadow mb-8">
     <h2 class="text-xl font-semibold mb-4">Answers</h2>
@@ -72,16 +74,17 @@
           <div class="check-icon">&#10003;</div>
         {% endif %}
 
-      <p class="text-gray-600">{{ answer.content }}</p>
+      <p class="text-gray-600">{{response.response}}</p>
       <div class="flex items-center mt-2">
-        <div class="text-xs text-gray-500">Answered by {{ answer.user }}</div>
-        <div class="ml-2 text-xs text-gray-500">{{ answer.created_at|timesince }}</div>
+        <div class="text-xs text-gray-500">Answered by {{response.user.username}}</div>
+        <div class="ml-2 text-xs text-gray-500">{{ response.created_at|timesince }}</div>
       </div>
     </div>
 
     <!-- Add more answers with upvote/downvote buttons as needed -->
 
   </div>
+  {% endfor %}
   
 
     <!-- Your Answer Form -->
