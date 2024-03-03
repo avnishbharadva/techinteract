@@ -4,99 +4,147 @@
 {% load humanize %}
 
 <head>
-    <style>
-        .gradient-border {
-          /* background: linear-gradient(to right, #ff7e5f, #feb47b); */
-          border: 2px solid transparent;
-          color: #000;
-          border-radius: 4px;
-          border-image: linear-gradient(to right, #48CB90, #8675ED);
-          border-image-slice: 1;
-        }
-    
-        .gradient-border:hover {
-          background: #6575F1;
-          color: #fff;
-        }
-      </style>
+  <style>
+    .gradient-border {
+      /* background: linear-gradient(to right, #ff7e5f, #feb47b); */
+      border: 2px solid transparent;
+      color: #000;
+      border-radius: 4px;
+      border-image: linear-gradient(to right, #48CB90, #8675ED);
+      border-image-slice: 1;
+    }
+
+    .gradient-border:hover {
+      background: #6575F1;
+      color: #fff;
+    }
+  </style>
 </head>
 
 <section class="bg-indigo-100 p-4">
-    <!-- Main Content -->
+  <!-- Main Content -->
   <div class="container mx-auto mt-8 ">
 
     <!-- Question Details -->
-    <div class=" hover:animate-background rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:bg-[length:400%_400%] hover:shadow-sm hover:[animation-duration:_4s] p-[2px] rounded mb-8">
-        <div class="rounded-[10px] bg-white p-4 sm:p-6">
-      <h1 class="text-2xl font-semibold mb-4">{{query.query}}</h1>
-      <p class="text-gray-600">{{query.desc}}</p>
-      <div class="flex items-center mt-4">
-        <div class="text-xs text-gray-500">Asked by {{query.user.username}}</div>
-        <div class="ml-2 text-xs text-gray-500">{{ query.created_at|naturaltime }}</div>
-      </div>
+    <div
+      class=" hover:animate-background rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:bg-[length:400%_400%] hover:shadow-sm hover:[animation-duration:_4s] p-[2px] rounded mb-8">
+      <div class="rounded-[10px] bg-white p-4 sm:p-6">
+        <h1 class="text-2xl font-semibold mb-4">{{query.query}}</h1>
+        <p class="text-gray-600">{{query.desc}}</p>
+
+        <div class="mt-4 flex flex-wrap gap-1">
+          <span class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600">
+            Tag: {{query.tag.tag_name}}
+          </span>
+        </div>
+        <div class="flex items-center mt-4">
+          <div class="text-xs text-gray-500">Asked by {{query.user.username}}</div>
+
+          <div class="ml-2 text-xs text-gray-500">{{ query.created_at|naturaltime }}</div>
+        </div>
       </div>
     </div>
 
-    {% for response in responses %}
 
- <!-- Answers -->
- <div class="bg-white p-4 rounded shadow mb-8">
-    <h2 class="text-xl font-semibold mb-4">Answers</h2>
+    <!-- Answers -->
+    <div class="bg-white p-4 rounded shadow mb-8">
+      <h2 class="text-xl font-semibold mb-4">Answers</h2>
+      {% for response in responses %}
 
-    <!-- Sample Answer with Upvote/Downvote/Mark as Correct -->
-    <div class="border-b mb-4 pb-2">
-       <!-- Upvote Button -->
-       <button class="text-green-500 hover:text-green-700 focus:outline-none">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M5 15l7-7 7 7"></path>
-        </svg>
-      </button>
-     
-      <!-- Display Upvote Count -->
-      <span class="text-gray-600">{{ answer.upvotes }}</span>
+      <!-- Sample Answer with Upvote/Downvote/Mark as Correct -->
+      <div class=" my-4 pb-2">
+        <!-- Upvote Button -->
+        <button class="text-green-500 hover:text-green-700 focus:outline-none">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+          </svg>
+        </button>
 
-     <!-- Downvote Button -->
-     <button class="text-red-500 hover:text-red-700 focus:outline-none">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-            d="M19 9l-7 7-7-7"></path>
-        </svg>
-      </button>
-      <!-- Display Downvote Count -->
-      <span class="text-gray-600">{{ answer.downvotes }}</span>
+        <!-- Display Upvote Count -->
+        <span class="text-gray-600">{{ answer.upvotes }}</span>
 
-      <!-- Mark as Correct Button -->
+        <!-- Downvote Button -->
+        <button class="text-red-500 hover:text-red-700 focus:outline-none">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <!-- Display Downvote Count -->
+        <span class="text-gray-600">{{ answer.downvotes }}</span>
+
+        <!-- Mark as Correct Button -->
         <!-- Check Icon -->
-        {% if answer.is_correct %}
-          <div class="check-icon">&#10003;</div>
-        {% endif %}
 
-      <p class="text-gray-600">{{response.response}}</p>
-      <div class="flex items-center mt-2">
-        <div class="text-xs text-gray-500">Answered by {{response.user.username}}</div>
-        <div class="ml-2 text-xs text-gray-500">{{ response.created_at|timesince }}</div>
+        {%if user.id == query.user.id%}
+        {%if response.is_verified == False%}
+        <button class="text-red-500 hover:text-red-700 focus:outline-none">
+          <a href="{% url 'user_points' user_id=response.user.id  question_id=response.query_id res_id=response.id%}">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 100 100">
+              <!-- Circle -->
+              <circle cx="50" cy="50" r="45" fill="none" stroke="#6575F1" stroke-width="5" />
+              
+              <!-- Tick Mark -->
+              <path d="M25 50 L40 65 L75 30" fill="none" stroke="#6575F1" stroke-width="5" />
+            </svg>
+          </a>
+        </button>
+        {%else%}
+        <button class="text-red-500 hover:text-red-700 focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 100 100">
+            <!-- Circle -->
+            <circle cx="50" cy="50" r="45" fill="#6575F1" stroke="#fff" stroke-width="5" />
+            
+            <!-- Tick Mark -->
+            <path d="M25 50 L40 65 L75 30" fill="none" stroke="#fff" stroke-width="5" />
+          </svg>
+        </button>
+        {%endif%}
+        {%endif%}
+        {%if response.is_verified == True%}
+        <button class="text-red-500 hover:text-red-700 focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 100 100">
+            <!-- Circle -->
+            <circle cx="50" cy="50" r="45" fill="#6575F1" stroke="#fff" stroke-width="5" />
+            
+            <!-- Tick Mark -->
+            <path d="M25 50 L40 65 L75 30" fill="none" stroke="#fff" stroke-width="5" />
+          </svg>
+        </button>
+        {%endif%}
+        
+
+
+        <p class="text-gray-600">{{response.response}}</p>
+        <div class="flex items-center mt-2">
+          <div class="text-xs text-gray-500">Answered by {{response.user.username}}</div>
+          <div class="ml-2 text-xs text-gray-500">{{ response.created_at|timesince }}</div>
+
+        </div>
+        <hr class="mt-2">
+        {% endfor %}
       </div>
+
+      <!-- Add more answers with upvote/downvote buttons as needed -->
+
     </div>
 
-    <!-- Add more answers with upvote/downvote buttons as needed -->
 
-  </div>
-  {% endfor %}
-  
 
     <!-- Your Answer Form -->
     <div class="bg-white p-4 rounded shadow">
       <h2 class="text-xl font-semibold mb-4">Your Answer</h2>
-      <form action="#" method="post">
-        <textarea class="w-full h-32 p-2 border rounded mb-4" placeholder="Type your answer here"></textarea>
-        <button type="submit" class="inline-block w-full rounded-lg gradient-border px-5 py-3 font-medium text-white sm:w-auto hover:bg-gradient-to-r hover:bg-indigo-500 transition  hover:border-0">Submit Answer</button>
+      <form action="/add_response" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="query" value="{{query.id}}">
+        <textarea class="w-full h-32 p-2 border rounded mb-4" placeholder="Type your answer here" name="response"
+          id="response"></textarea>
+        <button type="submit"
+          class="inline-block w-full rounded-lg gradient-border px-5 py-3 font-medium text-white sm:w-auto hover:bg-gradient-to-r hover:bg-indigo-500 transition  hover:border-0">Submit
+          Answer</button>
       </form>
     </div>
 
   </div>
-  </section>
+</section>
 
 {% endblock %}

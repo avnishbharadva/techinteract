@@ -11,6 +11,7 @@ class Users(models.Model):
     email = models.EmailField()
     password = models.TextField()
     profile_pic = models.ImageField(upload_to='user_profile')
+    points = models.IntegerField(default=0)
     total_query = models.IntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
 
@@ -28,3 +29,4 @@ class Response(models.Model):
     response = models.TextField()
     query = models.ForeignKey(Query, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+    is_verified = models.BooleanField(default=False)

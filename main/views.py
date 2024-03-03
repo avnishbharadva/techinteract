@@ -134,3 +134,16 @@ def profile(request):
     user_detail = Users.objects.get(id=request.user.id)
     posts = Query.objects.select_related('tag').filter(user_id=request.user.id)
     return render(request, 'my_profile.html', {'user_detail':user_detail,'posts':posts})
+
+def user_points(request, user_id,question_id,res_id):
+    user = Users.objects.get(id = user_id)
+    response = Response.objects.get(id= res_id)
+    old_points = user.points
+    if response.is_verified == False:
+
+        new_points = old_points+5
+        user.points = new_points
+        response.is_verified = True
+        user.save()
+        response.save()
+    return redirect(f'/question/{question_id}')
