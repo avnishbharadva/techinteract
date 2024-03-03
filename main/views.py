@@ -147,3 +147,6 @@ def user_points(request, user_id,question_id,res_id):
         user.save()
         response.save()
     return redirect(f'/question/{question_id}')
+
+def become_mentor(request):
+    return render(request, 'mentor_form.html')

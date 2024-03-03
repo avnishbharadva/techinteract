@@ -14,4 +14,5 @@ urlpatterns = [
     path('add_response', views.add_response, name="add_response"),
     path('profile', views.profile, name='profile'),
     path('user_points/<int:user_id>/<int:question_id>/<int:res_id>', views.user_points, name='user_points'),
+    path('become-mentor', views.become_mentor, name='become_mentor'),
 ]

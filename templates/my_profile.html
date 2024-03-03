@@ -29,12 +29,99 @@
             background: #6575F1;
             color: #fff;
         }
+      
+        /* Additional styles for smooth transition */
+        #popup.transition-opacity {
+            transition: opacity 0.5s ease-in-out;
+        }
     </style>
 </head>
 
-<div class="p-16 bg-indigo-100">
-    <div class="p-8  shadow mt-24">
+<div class="p-16 bg-indigo-100 ">
+    {%if user_detail.points >= 40%}
+    <div
+  class="bg-indigo-600  rounded-[10px] px-4 py-3 text-white sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8"
+>
+  <p class="text-center font-medium sm:text-left">
+    Your Contributions are Incredible! 🎉 
+    <br class="sm:hidden" />
+   You are now eligible for Mentor.
+  </p>
 
+  <button
+    class="mt-4 block rounded-lg bg-white px-5 py-3 text-center text-sm font-medium text-indigo-600 transition hover:bg-white/90 focus:outline-none focus:ring active:text-indigo-500 sm:mt-0"
+    id="openPopup"
+  >
+    Become a mentor!
+</button>
+  
+</div>
+
+<!-- Popup container -->
+<div id="popup" class="hidden  fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center z-50 transition-opacity">
+
+    <!-- Popup content -->
+    <div class="bg-white mx-4 rounded-lg shadow-md relative">
+
+        <!-- Close button -->
+        
+        <!-- White box for content -->
+        <div class="bg-white p-0 rounded-lg">
+            <button id="closePopup" class="absolute top-0 right-0 mt-2 mr-2 bg-white rounded-[5px] text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+
+            <!-- Popup content goes here -->
+            <section>
+                <div class="mx-auto max-w-screen-2xl">
+                  <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                    <div class="bg-blue-600 p-8 md:p-12 lg:px-16 lg:py-24">
+                      <div class="mx-auto max-w-xl flex flex-col justify-center items-start">
+                        <span class="bg-indigo-100 p-2 text-l text-indigo-600 rounded-sm my-3 font-medium">Earn money by mentoring others!</span>
+                        <h2 class="text-2xl font-bold text-white my-3 md:text-3xl">
+                         Become a mentor!
+                        </h2>
+              
+                        <p class="hidden text-white/90 sm:mt-4 sm:block">
+                            Get instantly paid for every mentorship that you take & offer more services to others!
+                        </p>
+              
+                        <div class="mt-4 md:mt-8">
+                          <a
+                            href="/become-mentor"
+                            class="inline-block rounded border border-white bg-white px-12 py-3 text-sm font-medium text-blue-500 transition hover:bg-transparent hover:text-white focus:outline-none focus:ring focus:ring-yellow-400"
+                          >
+                            Get Started Today
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+              
+                    <div class="grid grid-cols-2 gap-4 md:grid-cols-1 lg:grid-cols-2">
+                      <img
+                        alt=""
+                        src="https://images.unsplash.com/photo-1621274790572-7c32596bc67f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80"
+                        class="h-40 w-full object-cover sm:h-56 md:h-full"
+                      />
+              
+                      <img
+                        alt=""
+                        src="https://images.unsplash.com/photo-1567168544813-cc03465b4fa8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+                        class="h-40 w-full object-cover sm:h-56 md:h-full"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+        </div>
+    </div>
+</div>
+
+    {%endif%}
+    <div class="p-8  shadow mt-24">
 
         <div class="relative">
             <div
@@ -99,29 +186,16 @@
     </div>
 </div>
 
-<!-- <div class="profile_det">
-    <h1>Username : {{user_detail.username}}</h1>
-    <h2>First Name : {{user_detail.first_name}}</h2>
-    <h2>Last Name : {{user_detail.last_name}}</h2>
-    <h2>Email : {{user_detail.email}}</h2>
-    <h2>Profile Pic : <img src="{{user_detail.profile_pic}}" alt="profile_pic"></h2>
-    <h2>Total Posts : {{user_detail.total_query}}</h2>
-    <h2>User Since : {{user_detail.created_at}}</h2>
-</div> -->
+<script>
+    // JavaScript to show/hide the popup
+    document.getElementById('openPopup').addEventListener('click', function () {
+        document.getElementById('popup').classList.remove('hidden');
+    });
 
-<!-- <div class="posts">
+    document.getElementById('closePopup').addEventListener('click', function () {
+        document.getElementById('popup').classList.add('hidden');
+    });
+</script>
 
-    <h1>All Posts</h1>
-    {% for post in posts %}
-    <div class="post">
-        <a href="{% url 'question_detail' question_id=post.id %}">
-            <h2>{{post.query}}</h2>
-            <h3>{{post.desc}}</h3>
-        </a>
-        <h3>{{post.tag.tag_name}}</h3>
-        <h3>{{post.created_at}}</h3>
-    </div>
-    {% endfor %}
 
-</div> -->
 {% endblock %}
