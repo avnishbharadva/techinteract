@@ -1,24 +1,99 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% load humanize %}
 
-<div class="query">
-    <h2>{{query.query}}</h2>
-    <h3>{{query.desc}}</h3>
-    <h3>{{query.tag.tag_name}}</h3>
-    <h3>{{query.user.username}}</h3>
-    <h3>{{query.created_at}}</h3>
-</div>
+<head>
+    <style>
+        .gradient-border {
+          /* background: linear-gradient(to right, #ff7e5f, #feb47b); */
+          border: 2px solid transparent;
+          color: #000;
+          border-radius: 4px;
+          border-image: linear-gradient(to right, #48CB90, #8675ED);
+          border-image-slice: 1;
+        }
+    
+        .gradient-border:hover {
+          background: #6575F1;
+          color: #fff;
+        }
+      </style>
+</head>
 
-<div class="response">
-    <h2>Your Answer</h2>
+<section class="bg-indigo-100 p-4">
+    <!-- Main Content -->
+  <div class="container mx-auto mt-8 ">
 
-    <form action="/add_response" method="post">
-        {% csrf_token %}
-        <input type="hidden" name="query" value="{{query.id}}">
-        <textarea name="response" id="response" cols="70" rows="10">
-        </textarea>
-        <input type="submit" value="Post Answer">
-    </form>
-</div>
+    <!-- Question Details -->
+    <div class=" hover:animate-background rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:bg-[length:400%_400%] hover:shadow-sm hover:[animation-duration:_4s] p-[2px] rounded mb-8">
+        <div class="rounded-[10px] bg-white p-4 sm:p-6">
+      <h1 class="text-2xl font-semibold mb-4">{{query.query}}</h1>
+      <p class="text-gray-600">{{query.desc}}</p>
+      <div class="flex items-center mt-4">
+        <div class="text-xs text-gray-500">Asked by {{query.user.username}}</div>
+        <div class="ml-2 text-xs text-gray-500">{{ query.created_at|naturaltime }}</div>
+      </div>
+      </div>
+    </div>
+
+ <!-- Answers -->
+ <div class="bg-white p-4 rounded shadow mb-8">
+    <h2 class="text-xl font-semibold mb-4">Answers</h2>
+
+    <!-- Sample Answer with Upvote/Downvote/Mark as Correct -->
+    <div class="border-b mb-4 pb-2">
+       <!-- Upvote Button -->
+       <button class="text-green-500 hover:text-green-700 focus:outline-none">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M5 15l7-7 7 7"></path>
+        </svg>
+      </button>
+     
+      <!-- Display Upvote Count -->
+      <span class="text-gray-600">{{ answer.upvotes }}</span>
+
+     <!-- Downvote Button -->
+     <button class="text-red-500 hover:text-red-700 focus:outline-none">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </button>
+      <!-- Display Downvote Count -->
+      <span class="text-gray-600">{{ answer.downvotes }}</span>
+
+      <!-- Mark as Correct Button -->
+        <!-- Check Icon -->
+        {% if answer.is_correct %}
+          <div class="check-icon">&#10003;</div>
+        {% endif %}
+
+      <p class="text-gray-600">{{ answer.content }}</p>
+      <div class="flex items-center mt-2">
+        <div class="text-xs text-gray-500">Answered by {{ answer.user }}</div>
+        <div class="ml-2 text-xs text-gray-500">{{ answer.created_at|timesince }}</div>
+      </div>
+    </div>
+
+    <!-- Add more answers with upvote/downvote buttons as needed -->
+
+  </div>
+  
+
+    <!-- Your Answer Form -->
+    <div class="bg-white p-4 rounded shadow">
+      <h2 class="text-xl font-semibold mb-4">Your Answer</h2>
+      <form action="#" method="post">
+        <textarea class="w-full h-32 p-2 border rounded mb-4" placeholder="Type your answer here"></textarea>
+        <button type="submit" class="inline-block w-full rounded-lg gradient-border px-5 py-3 font-medium text-white sm:w-auto hover:bg-gradient-to-r hover:bg-indigo-500 transition  hover:border-0">Submit Answer</button>
+      </form>
+    </div>
+
+  </div>
+  </section>
+
 {% endblock %}
