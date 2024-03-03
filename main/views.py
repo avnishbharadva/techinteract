@@ -95,9 +95,10 @@ def view_question(request):
 def question_detail(request, question_id):
 
     query = Query.objects.select_related('tag','user').get(id=question_id)
+    res = Response.objects.select_related('user').filter(query_id=question_id)
     # print(query.tag)
     # query = get_object_or_404(Query, id=question_id)
-    return render(request, 'question_detail.html', {'query': query})
+    return render(request, 'question_detail.html', {'query': query,'responses':res})
 
 def all_tags(request):
 
@@ -118,12 +119,18 @@ def add_response(request):
         response = request.POST['response']
         query_id = request.POST['query']
         query = Query.objects.get(id=query_id)
-        print(user)
-        print(query)
+        # print(user)
+        # print(query)
         res = Response.objects.create(user_id=user,query_id=query.id,response=response)
-        print(res)
+        # print(res)
         return redirect('/questions')
     else:
         print("Nothing")
         # tags = Tag.objects.all()
         # return render(request, 'add_post.html',{'tags':tags})
+
+def profile(request):
+
+    user_detail = Users.objects.get(id=request.user.id)
+    posts = Query.objects.select_related('tag').filter(user_id=request.user.id)
+    return render(request, 'my_profile.html', {'user_detail':user_detail,'posts':posts})
