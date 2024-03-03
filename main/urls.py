@@ -12,4 +12,5 @@ urlpatterns = [
     path('tags', views.all_tags, name='all_tags'),
     path('tag/<int:tag_id>', views.tag_detail, name="tag_detail"),
     path('add_response', views.add_response, name="add_response"),
+    path('profile', views.profile, name='profile'),
 ]

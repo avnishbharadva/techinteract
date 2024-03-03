@@ -10,7 +10,7 @@
     <h3>{{query.created_at}}</h3>
 </div>
 
-<div class="response">
+<div class="response_block">
     <h2>Your Answer</h2>
 
     <form action="/add_response" method="post">
@@ -20,5 +20,14 @@
         </textarea>
         <input type="submit" value="Post Answer">
     </form>
+
+    {% for response in responses %}
+    <div class="response">
+        <h2>{{response.response}}</h2>
+        By : <h3>{{response.user.username}}</h3>
+        At : <h3>{{response.created_at}}</h3>
+    </div>
+    {% endfor %}
+
 </div>
 {% endblock %}
