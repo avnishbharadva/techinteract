@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib import messages
-from .models import Users,Query,Response
+from .models import *
 from adminpanel.models import Tag
 from django.contrib.auth.models import User
 # from django.contrib.auth import authenticate,login,logout
@@ -9,7 +9,8 @@ from django.contrib import auth
 
 def index(request):
 
-    queries = Query.objects.select_related('tag','user').all()[:6]
+    # queries = Query.objects.select_related('tag','user').all()[:6]
+    queries = Query.objects.select_related('tag','user').order_by('-created_at')[:6]
     return render(request, 'index.html', {'queries':queries})
 
 def register(request):
@@ -120,20 +121,23 @@ def tag_detail(request, tag_id):
 def add_response(request):
 
     if request.method == 'POST':
-        user = request.user.id
+        user_id = request.user.id
         query = request.POST['query']
         response = request.POST['response']
         query_id = request.POST['query']
         query = Query.objects.get(id=query_id)
         # print(user)
+        user = Users.objects.get(id=user_id)
+        old_response_counter = user.total_response
+        new_response_counter = old_response_counter + 1
+        user.total_response = new_response_counter
+        user.save()
         # print(query)
-        res = Response.objects.create(user_id=user,query_id=query.id,response=response)
+        res = Response.objects.create(user_id=user_id,query_id=query.id,response=response)
         # print(res)
         return redirect(f'/question/{query_id}')
     else:
         print("Nothing")
-        # tags = Tag.objects.all()
-        # return render(request, 'add_post.html',{'tags':tags})
 
 def profile(request):
 
@@ -152,7 +156,27 @@ def user_points(request, user_id,question_id,res_id):
         response.is_verified = True
         user.save()
         response.save()
+
     return redirect(f'/question/{question_id}')
 
 def become_mentor(request):
     return render(request, 'mentor_form.html')
+
+def add_mentor_detail(request):
+
+    if request.method == 'POST':
+        user_id = request.user.id
+        phone_number = request.POST['phone_number']
+        linkedin_profile = request.POST['linkedin_profile']
+        experience = request.POST['experience']
+        designation = request.POST['designation']
+        introduction = request.POST['introduction']
+        domains = request.POST['domains']
+
+        mentor = Mentor.objects.create(user_id=user_id,phone_number=phone_number,linkedin_profile=linkedin_profile,experience=experience,designation=designation,introduction=introduction,domains=domains)
+
+        user = Users.objects.get(id=user_id)
+        user.is_mentor = True
+        user.save()
+
+        return redirect('profile')

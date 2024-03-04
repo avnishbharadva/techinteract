@@ -121,6 +121,8 @@
 
 
     <!-- Your Answer Form -->
+    
+    {% if user.is_authenticated %}
     <div class="bg-white p-4 rounded shadow">
       <h2 class="text-xl font-semibold mb-4">Your Answer</h2>
       <form action="/add_response" method="post">
@@ -133,7 +135,9 @@
           Answer</button>
       </form>
     </div>
-
+    {% endif %}
+      
+    
   </div>
 </section>
 

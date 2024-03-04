@@ -7,7 +7,7 @@ def index(request):
 
     return render(request, 'adminindex.html')
 
-def profile(request):
+def admin_profile(request):
 
     return render(request, 'adminprofile.html')
 
