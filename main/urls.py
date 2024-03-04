@@ -15,4 +15,5 @@ urlpatterns = [
     path('profile', views.profile, name='profile'),
     path('user_points/<int:user_id>/<int:question_id>/<int:res_id>', views.user_points, name='user_points'),
     path('become-mentor', views.become_mentor, name='become_mentor'),
+    path('add_mentor_detail', views.add_mentor_detail, name="add_mentor_detail"),
 ]
