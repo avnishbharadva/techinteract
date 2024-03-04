@@ -97,6 +97,8 @@
                 type="text"
                 name="first_name"
                 class="mt-1 w-full p-2 form-control-user rounded-md border border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                pattern="[a-zA-Z]{1,8}"
+                title="First Name should be 1-8 character length only"
                 id="exampleFirstName" placeholder="First Name" required
               />
             </div>
@@ -109,6 +111,8 @@
               <input
                 type="text"
                 class="mt-1 w-full p-2 rounded-md border border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                pattern="[a-zA-Z]{1,8}"
+                title="Last Name should be 1-8 character length only"
                 id="exampleLastName" placeholder="Last Name" name="last_name" required
               />
             </div>
@@ -120,6 +124,8 @@
               <input
                 type="text"
                 class="mt-1 w-full p-2 rounded-md border border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
+                pattern="[a-zA-Z0-9]{4,12}"
+                title="Username must contains characters and digits with the length of 4-10"
                 id="exampleLastName" placeholder="Username" name="username" required
               />
             </div>
@@ -157,30 +163,6 @@
                 name="password_repeat" placeholder="Confirm Password" required
                 class="mt-1 w-full p-2 rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
               />
-            </div>
-  
-            <div class="col-span-6">
-              <label for="MarketingAccept" class="flex gap-4">
-                <input
-                  type="checkbox"
-                  id="MarketingAccept"
-                  name="marketing_accept"
-                  class="size-5 rounded-md border-gray-200 bg-white shadow-sm"
-                />
-  
-                <span class="text-sm text-gray-700">
-                  I want to receive emails about events, product updates and company announcements.
-                </span>
-              </label>
-            </div>
-  
-            <div class="col-span-6">
-              <p class="text-sm text-gray-500">
-                By creating an account, you agree to our
-                <a href="#" class="text-gray-700 underline"> terms and conditions </a>
-                and
-                <a href="#" class="text-gray-700 underline">privacy policy</a>.
-              </p>
             </div>
   
             <div class="col-span-6 sm:flex sm:items-center sm:gap-4">
