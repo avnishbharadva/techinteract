@@ -9,7 +9,8 @@ from django.contrib import auth
 
 def index(request):
 
-    return render(request, 'index.html')
+    queries = Query.objects.select_related('tag','user').all()[:6]
+    return render(request, 'index.html', {'queries':queries})
 
 def register(request):
 
@@ -73,13 +74,18 @@ def logout(request):
 def add_post(request):
 
     if request.method == 'POST':
-        user = request.user.id
+        user_id = request.user.id
         query = request.POST['query']
         desc = request.POST['desc']
         tag_id = request.POST['tag']
         tag = Tag.objects.get(id=tag_id)
-        print(user)
-        que = Query.objects.create(user_id=user,query=query,desc=desc,tag_id=tag.id)
+        print(user_id)
+        user = Users.objects.get(id=user_id)
+        old_query_counter = user.total_query
+        new_query_counter = old_query_counter + 1
+        user.total_query = new_query_counter
+        user.save()
+        que = Query.objects.create(user_id=user_id,query=query,desc=desc,tag_id=tag.id)
         print(que)
         return redirect('add_post')
     else:
@@ -123,7 +129,7 @@ def add_response(request):
         # print(query)
         res = Response.objects.create(user_id=user,query_id=query.id,response=response)
         # print(res)
-        return redirect('/questions')
+        return redirect(f'/question/{query_id}')
     else:
         print("Nothing")
         # tags = Tag.objects.all()
