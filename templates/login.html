@@ -53,16 +53,17 @@
 
                         {% csrf_token %}
                         <div class="col-span-6">
-                            <label for="Email" class="block text-sm font-medium text-gray-700"> Username </label>
+                            <label for="username" class="block text-sm font-medium text-gray-700"> Username </label>
 
-                            <input type="text" id="Email" name="username"
-                                class="mt-1 w-full p-2 rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
+                            <input type="text" id="username" name="username" pattern="[a-zA-Z0-9]{4,12}"
+                            title="Username must contains characters and digits with the length of 4-12"
+                                class="mt-1 w-full p-2 rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" required />
                         </div>
                         <div class="col-span-6">
-                            <label for="Email" class="block text-sm font-medium text-gray-700"> Password </label>
+                            <label for="password" class="block text-sm font-medium text-gray-700"> Password </label>
 
-                            <input type="password" id="Email" name="password"
-                                class="mt-1 w-full p-2 rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" />
+                            <input type="password" id="password" name="password" 
+                            class="mt-1 w-full p-2 rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" required />
                         </div>
 
                         <div class="col-span-6 sm:flex sm:items-center sm:gap-4">

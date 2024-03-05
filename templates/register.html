@@ -125,7 +125,7 @@
                 type="text"
                 class="mt-1 w-full p-2 rounded-md border border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
                 pattern="[a-zA-Z0-9]{4,12}"
-                title="Username must contains characters and digits with the length of 4-10"
+                title="Username must contains characters and digits with the length of 4-12"
                 id="exampleLastName" placeholder="Username" name="username" required
               />
             </div>
@@ -147,6 +147,7 @@
               <input
                 type="password"
                 id="Password"
+                title="Password contain uppercase,lowercase,number,special char,password should be 8-18 length" pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#%&*?!]).{8,18}"
                 name="password" placeholder="Password" required
                 class="mt-1 w-full p-2 rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
               />
@@ -160,6 +161,7 @@
               <input
                 type="password"
                 id="PasswordConfirmation"
+                title="Password contain uppercase,lowercase,number,special char,password should be 8-18 length" pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#%&*?!]).{8,18}"
                 name="password_repeat" placeholder="Confirm Password" required
                 class="mt-1 w-full p-2 rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm"
               />
