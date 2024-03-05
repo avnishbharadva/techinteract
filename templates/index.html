@@ -26,7 +26,7 @@
         class="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl p-2">
         Connecting Tech
 
-        <span class="sm:block mt-4"> Sharing Solutions. </span>
+        <span class="sm:block mt-4"> Sharing Solutions </span>
     </h1>
 
       <p class="mx-auto mt-6 max-w-xl sm:text-xl/relaxed">
@@ -53,9 +53,6 @@
   <div class="container">
     <div class="row justify-content-md-center mt-5">
       <div class="mx-auto max-w-3xl text-center">
-        <h3 class="mx-auto mt-4 max-w-xl sm:text-sm/relaxed mb-2">
-          What We Do?
-        </h3>
 
         <span
           class="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
@@ -83,8 +80,9 @@
           <div class="rounded-[10px] bg-white p-4 !pt-16 sm:p-6">
             <time datetime="2022-10-10" class="block text-xs text-gray-500"> {{query.created_at|naturaltime}} </time>
   
+      <a href="{% url 'question_detail' question_id=query.id %}">      
             <h3 class="mt-0.5 text-lg font-medium text-gray-900">
-              {{ query.query|slice:"0:20" }}{% if query.query|length > 20 %}...{% endif %}
+              {{ query.query|slice:"0:40" }}{% if query.query|length > 40 %}...{% endif %}
           </h3>
       </a>
   
