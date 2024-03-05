@@ -180,3 +180,8 @@ def add_mentor_detail(request):
         user.save()
 
         return redirect('profile')
+    
+def view_mentors(request):
+
+    mentors = Mentor.objects.select_related('user').all()
+    return render(request, 'mentors.html', {'mentors':mentors})
