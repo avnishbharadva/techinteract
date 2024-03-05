@@ -17,4 +17,6 @@ urlpatterns = [
     path('become-mentor', views.become_mentor, name='become_mentor'),
     path('add_mentor_detail', views.add_mentor_detail, name="add_mentor_detail"),
     path('mentors', views.view_mentors, name='view_mentors'),
+    path('dashboard/mentor', views.mentors_dashboard, name='mentors_dashboard'),
+    path('dashboard/mentor/schedule', views.mentors_schedule, name='mentors_schedule'),
 ]

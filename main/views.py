@@ -185,3 +185,8 @@ def view_mentors(request):
 
     mentors = Mentor.objects.select_related('user').all()
     return render(request, 'mentors.html', {'mentors':mentors})
+
+def mentors_dashboard(request):
+    return render(request, 'mentor_dashboard.html')
+def mentors_schedule(request):
+    return render(request, 'mentors_schedule.html')
