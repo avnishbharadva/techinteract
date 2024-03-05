@@ -23,26 +23,20 @@
   <div class="mx-auto max-w-screen-xl px-4 py-32 lg:flex lg:h-screen lg:items-center">
     <div class="mx-auto max-w-3xl text-center">
       <h1
-        class="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
-        Understand User Flow.
+        class="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl p-2">
+        Connecting Tech
 
-        <span class="sm:block"> Increase Conversion. </span>
-      </h1>
+        <span class="sm:block mt-4"> Sharing Solutions. </span>
+    </h1>
 
-      <p class="mx-auto mt-4 max-w-xl sm:text-xl/relaxed">
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt illo tenetur fuga ducimus
-        numquam ea!
+      <p class="mx-auto mt-6 max-w-xl sm:text-xl/relaxed">
+        Discover and share knowledge on our techInteractive platform, enhanced with a mentorship platform for collaborative learning.
       </p>
 
       <div class="mt-8 flex flex-wrap justify-center gap-4">
         <a class="block w-full rounded border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-black focus:outline-none focus:ring active:text-opacity-75 sm:w-auto"
-          href="#">
+          href="questions">
           Get Started
-        </a>
-
-        <a class="block w-full rounded border border-blue-600 px-12 py-3 text-sm font-medium text-black hover:bg-blue-600 focus:outline-none hover:text-white focus:ring active:bg-blue-500 sm:w-auto"
-          href="#">
-          Learn More
         </a>
       </div>
     </div>
@@ -86,22 +80,18 @@
   
         <article
           class="hover:animate-background rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:bg-[length:400%_400%] hover:shadow-sm hover:[animation-duration:_4s]">
-          <div class="rounded-[10px] bg-white p-4 sm:p-6">
+          <div class="rounded-[10px] bg-white p-4 !pt-16 sm:p-6">
             <time datetime="2022-10-10" class="block text-xs text-gray-500"> {{query.created_at|naturaltime}} </time>
   
-            <a href="{% url 'question_detail' question_id=query.id %}">
-              <h3 class="mt-0.5 text-lg font-medium text-gray-900">
-                  {{query.query}}
-              </h3>
-            </a>
+            <h3 class="mt-0.5 text-lg font-medium text-gray-900">
+              {{ query.query|slice:"0:20" }}{% if query.query|length > 20 %}...{% endif %}
+          </h3>
+      </a>
   
             <div class="mt-4 flex flex-wrap gap-1">
-              <span class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600">
-                By : {{query.user.username}}
-              </span>
   
               <span class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600">
-                Tag : {{query.tag.tag_name}}
+                {{query.tag.tag_name}}
               </span>
             </div>
           </div>
@@ -143,12 +133,6 @@
       <div class="flex flex-wrap mx-6">
         <!-- Card 1 -->
         <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 px-4 mb-4">
-          <!--
-    Heads up! 👋
-    
-    Custom CSS:
-      - animate-background https://github.com/markmead/hyperui/blob/main/tailwind.preset.js
-    -->
     
     <a
     href="#"
