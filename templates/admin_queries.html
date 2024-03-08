@@ -1,0 +1,22 @@
+{% extends 'adminbase.html' %}
+
+
+{% block admin %}
+    
+    <table border="10">
+    {% for query in queries %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{query.query}}</td>
+            <td>{{query.desc}}</td>
+            <td>{{query.tag.tag_name}}</td>
+            <td>{{query.user.username}}</td>
+            <td>{{query.created_at}}</td>
+            <td><button>Update</button></td>
+            <td><button>Delete</button></td>
+        </tr>
+    {% endfor %}
+</table>
+        
+{% endblock %}
+    

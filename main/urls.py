@@ -14,9 +14,6 @@ urlpatterns = [
     path('add_response', views.add_response, name="add_response"),
     path('profile', views.profile, name='profile'),
     path('user_points/<int:user_id>/<int:question_id>/<int:res_id>', views.user_points, name='user_points'),
-    path('become-mentor', views.become_mentor, name='become_mentor'),
-    path('add_mentor_detail', views.add_mentor_detail, name="add_mentor_detail"),
-    path('mentors', views.view_mentors, name='view_mentors'),
-    path('dashboard/mentor', views.mentors_dashboard, name='mentors_dashboard'),
-    path('dashboard/mentor/schedule', views.mentors_schedule, name='mentors_schedule'),
+    path('users',views.fetch_users, name='fetch_users'),
+    path('user_questions/<int:user_id>/', views.user_questions, name='user_questions')
 ]

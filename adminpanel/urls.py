@@ -4,7 +4,9 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name="index"),
-    path('admin-profile', views.admin_profile, name="admin_profile"),
-    path('table', views.table, name="table"),
+    path('admin-tags', views.admin_tags, name="admin_tags"),
+    path('admin-queries', views.admin_queries, name="admin_queries"),
+    path('admin-responses', views.admin_responses, name="admin_responses"),
+    path('admin-users', views.admin_users, name="admin_users"),
     path('addtag', views.addtag, name="addtag"),
 ]

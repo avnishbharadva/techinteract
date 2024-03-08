@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+    
+    {% for user in users %}
+        <a href="{% url 'user_questions' user_id=user.id %}">
+            <h2>{{user.username}}</h2>
+        </a>
+        <h2>{{user.total_query}}</h2>
+        <h2>{{user.total_response}}</h2>
+        <h2>{{user.points}}</h2>
+    {% endfor %}
+        
+
+{% endblock %}
+    

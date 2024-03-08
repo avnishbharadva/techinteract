@@ -1,0 +1,25 @@
+{% extends 'adminbase.html' %}
+
+
+{% block admin %}
+    
+    <table border="10">
+    {% for user in users %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{user.first_name}}</td>
+            <td>{{user.last_name}}</td>
+            <td>{{user.username}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.total_query}}</td>
+            <td>{{user.total_response}}</td>
+            <td>{{user.points}}</td>
+            <td>{{user.created_at}}</td>
+            <td><button>Update</button></td>
+            <td><button>Delete</button></td>
+        </tr>
+    {% endfor %}
+</table>
+        
+{% endblock %}
+    

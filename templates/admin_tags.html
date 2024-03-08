@@ -1,0 +1,20 @@
+{% extends 'adminbase.html' %}
+
+
+{% block admin %}
+    
+    <table border="10">
+    {% for tag in tags %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{tag.tag_name}}</td>
+            <td>{{tag.tag_desc}}</td>
+            <td>{{tag.created_at}}</td>
+            <td><button>Update</button></td>
+            <td><button>Delete</button></td>
+        </tr>
+    {% endfor %}
+</table>
+        
+{% endblock %}
+    

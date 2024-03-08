@@ -3,8 +3,10 @@ from django.contrib import messages
 from .models import *
 from adminpanel.models import Tag
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 # from django.contrib.auth import authenticate,login,logout
 from django.contrib import auth
+
 # Create your views here.
 
 def index(request):
@@ -39,9 +41,9 @@ def register(request):
                 user = User.objects.create_user(first_name=first_name,last_name=last_name,username=username,email=email,password=password)
                 user.save()
                 print("User Added Successfully")
-                return redirect('/')
+                return redirect('login')
         else:
-            print("Password Not Matching")
+            print("Password Does Not Match")
             messages.info(request, 'Password Does not Matching')
             return redirect('register')
 
@@ -72,6 +74,7 @@ def logout(request):
     auth.logout(request)
     return redirect('/')
 
+@login_required(login_url='login')
 def add_post(request):
 
     if request.method == 'POST':
@@ -159,34 +162,12 @@ def user_points(request, user_id,question_id,res_id):
 
     return redirect(f'/question/{question_id}')
 
-def become_mentor(request):
-    return render(request, 'mentor_form.html')
+def fetch_users(request):
 
-def add_mentor_detail(request):
+    users = Users.objects.all()
+    return render(request, 'users.html', {'users':users})
 
-    if request.method == 'POST':
-        user_id = request.user.id
-        phone_number = request.POST['phone_number']
-        linkedin_profile = request.POST['linkedin_profile']
-        experience = request.POST['experience']
-        designation = request.POST['designation']
-        introduction = request.POST['introduction']
-        domains = request.POST['domains']
+def user_questions(request,user_id):
 
-        mentor = Mentor.objects.create(user_id=user_id,phone_number=phone_number,linkedin_profile=linkedin_profile,experience=experience,designation=designation,introduction=introduction,domains=domains)
-
-        user = Users.objects.get(id=user_id)
-        user.is_mentor = True
-        user.save()
-
-        return redirect('profile')
-    
-def view_mentors(request):
-
-    mentors = Mentor.objects.select_related('user').all()
-    return render(request, 'mentors.html', {'mentors':mentors})
-
-def mentors_dashboard(request):
-    return render(request, 'mentor_dashboard.html')
-def mentors_schedule(request):
-    return render(request, 'mentors_schedule.html')
+    queries = Query.objects.select_related('tag','user').filter(user_id=user_id)
+    return render(request, 'user_questions.html', {'queries':queries})
