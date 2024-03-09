@@ -1,5 +1,6 @@
 {% extends 'adminbase.html' %}
 
+{% block title %}Admin - All Tags{% endblock %}
 
 {% block admin %}
     
@@ -10,8 +11,8 @@
             <td>{{tag.tag_name}}</td>
             <td>{{tag.tag_desc}}</td>
             <td>{{tag.created_at}}</td>
-            <td><button>Update</button></td>
-            <td><button>Delete</button></td>
+            <td><a href="{% url 'update_tag' tag_id=tag.id %}"><button>Update</button></a></td>
+            <td><a href="{% url 'delete_tag' tag_id=tag.id %}"><button>Delete</button></a></td>
         </tr>
     {% endfor %}
 </table>

@@ -1,0 +1,31 @@
+{% extends 'adminbase.html' %}
+
+{% block title %}Update Tag{% endblock %}
+
+{% block admin %}
+
+
+<div class="">
+    <div class="">
+        <p class="">Update Tag</p>
+    </div>
+    <div class="">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="mb-3"><label class="form-label" for="tag_name"><strong>Tag Name</strong></label><input
+                    class="" type="text" id="tag_name" value="{{tag.tag_name}}" placeholder="Html" name="tag_name" required></div>
+
+            <div class="">
+                <div class="mb-3"><label class="" for="tag_desc"><strong>Tag
+                            Description</strong></label><input class="form-control" value="{{tag.tag_desc}}" type="text" id="tag_desc"
+                        placeholder="The HyperText Markup Language or HTML is the standard markup language for documents designed to be displayed in a web browser. It defines the content and structure of web content. It is often assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript."
+                        name="tag_desc" required></div>
+            </div>
+
+
+            <div class="mb-3"><input class="" type="submit" value="Update"></div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

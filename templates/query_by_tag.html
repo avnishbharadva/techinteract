@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 
+{% block title %}TechInteract - {{tag.tag_name}}{% endblock %}
+
 {% block content %}
     
 {% load humanize %}
     
 <div class="container">
-    <h2 class="text-2xl text-center font-bold my-3">View Questions</h2>
+    <h2 class="text-2xl text-center font-bold my-3">View Questions - {{tag.tag_name}}</h2>
     {% for query in queries %}
 <div class="w-full ms-6 mb-4">
     <!--

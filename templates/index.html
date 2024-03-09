@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 
+{% block title %}TechInteract - Home{% endblock %}
+
 {% block content %}
-{% load humanize %}
+{% load humanize %}]
+
 <head>
   <style>
     .gradient-border {
@@ -27,10 +30,11 @@
         Connecting Tech
 
         <span class="sm:block mt-4"> Sharing Solutions </span>
-    </h1>
+      </h1>
 
       <p class="mx-auto mt-6 max-w-xl sm:text-xl/relaxed">
-        Discover and share knowledge on our techInteractive platform, enhanced with a mentorship platform for collaborative learning.
+        Discover and share knowledge on our techInteractive platform, enhanced with a mentorship platform for
+        collaborative learning.
       </p>
 
       <div class="mt-8 flex flex-wrap justify-center gap-4">
@@ -65,7 +69,7 @@
     <div class="flex flex-wrap mx-6">
       <!-- Card 1 -->
 
-      
+
       {% for query in queries %}
       <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 px-4 mb-4">
         <!--
@@ -74,20 +78,20 @@
   Custom CSS:
     - animate-background https://github.com/markmead/hyperui/blob/main/tailwind.preset.js
   -->
-  
+
         <article
           class="hover:animate-background rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:bg-[length:400%_400%] hover:shadow-sm hover:[animation-duration:_4s]">
           <div class="rounded-[10px] bg-white p-4 !pt-16 sm:p-6">
             <time datetime="2022-10-10" class="block text-xs text-gray-500"> {{query.created_at|naturaltime}} </time>
-  
-      <a href="{% url 'question_detail' question_id=query.id %}">      
-            <h3 class="mt-0.5 text-lg font-medium text-gray-900">
-              {{ query.query|slice:"0:20" }}{% if query.query|length > 20 %}...{% endif %}
-          </h3>
-      </a>
-  
+
+            <a href="{% url 'question_detail' question_id=query.id %}">
+              <h3 class="mt-0.5 text-lg font-medium text-gray-900">
+                {{ query.query|slice:"0:20" }}{% if query.query|length > 20 %}...{% endif %}
+              </h3>
+            </a>
+
             <div class="mt-4 flex flex-wrap gap-1">
-  
+
               <span class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600">
                 {{query.tag.tag_name}}
               </span>
@@ -96,382 +100,21 @@
         </article>
       </div>
       {% endfor %}
-        
-     
-  
-      
-  
-  
-  
+
+
+
+
+
+
+
       <!-- Repeat for additional cards -->
-  
+
     </div>
-    
+
   </div>
 
   <!-- Experts Section -->
   <!-- Service 6 - Bootstrap Brain Component -->
-  <hr class="mb-4">
-  <section class="">
-    <div class="container">
-      <div class="row justify-content-md-center mt-5">
-        <div class="mx-auto max-w-3xl text-center">
-          <h3 class="mx-auto mt-4 max-w-xl sm:text-sm/relaxed mb-2">
-            Meet Our
-          </h3>
-  
-          <span
-            class="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
-            Experts</span>
-          <hr class="w-50 mx-auto mt-2 mb-5 mb-xl-9 border-dark-subtle">
-        </div>
-      </div>
-    </div>
-    <div class="container mx-4 p-4">
-      <div class="flex flex-wrap mx-6">
-        <!-- Card 1 -->
-        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 px-4 mb-4">
-    
-    <a
-    href="#"
-    class="relative block overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8 shadow-xl"
-   >
-    <span
-      class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"
-    ></span>
-  
-    <div class="sm:flex sm:justify-between sm:gap-4">
-      <div>
-        <h3 class="text-lg font-bold text-gray-900 sm:text-xl">
-          Building a SaaS product as a software developer
-        </h3>
-  
-        <p class="mt-1 text-xs font-medium text-gray-600">By John Doe</p>
-      </div>
-  
-      <div class="hidden sm:block sm:shrink-0">
-        <img
-          alt=""
-          src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
-          class="size-16 rounded-lg object-cover shadow-sm"
-        />
-      </div>
-    </div>
-  
-    <div class="mt-4">
-      <p class="text-pretty text-sm text-gray-500">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. At velit illum provident a, ipsa
-        maiores deleniti consectetur nobis et eaque.
-      </p>
-    </div>
-  
-    <dl class="mt-6 flex gap-4 sm:gap-6">
-      <div class="flex flex-col-reverse">
-        <dt class="text-sm font-medium text-gray-600">Published</dt>
-        <dd class="text-xs text-gray-500">31st June, 2021</dd>
-      </div>
-  
-      <div class="flex flex-col-reverse">
-        <dt class="text-sm font-medium text-gray-600">Reading time</dt>
-        <dd class="text-xs text-gray-500">3 minute</dd>
-      </div>
-    </dl>
-  </a>
-        </div>
-    
-        <!-- Card 2 -->
-        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 px-4 mb-4">
-          <!--
-    Heads up! 👋
-    
-    Custom CSS:
-      - animate-background https://github.com/markmead/hyperui/blob/main/tailwind.preset.js
-    -->
-    
-    <a
-    href="#"
-    class="relative block overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8 shadow-xl"
-  >
-    <span
-      class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"
-    ></span>
-  
-    <div class="sm:flex sm:justify-between sm:gap-4">
-      <div>
-        <h3 class="text-lg font-bold text-gray-900 sm:text-xl">
-          Building a SaaS product as a software developer
-        </h3>
-  
-        <p class="mt-1 text-xs font-medium text-gray-600">By John Doe</p>
-      </div>
-  
-      <div class="hidden sm:block sm:shrink-0">
-        <img
-          alt=""
-          src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
-          class="size-16 rounded-lg object-cover shadow-sm"
-        />
-      </div>
-    </div>
-  
-    <div class="mt-4">
-      <p class="text-pretty text-sm text-gray-500">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. At velit illum provident a, ipsa
-        maiores deleniti consectetur nobis et eaque.
-      </p>
-    </div>
-  
-    <dl class="mt-6 flex gap-4 sm:gap-6">
-      <div class="flex flex-col-reverse">
-        <dt class="text-sm font-medium text-gray-600">Published</dt>
-        <dd class="text-xs text-gray-500">31st June, 2021</dd>
-      </div>
-  
-      <div class="flex flex-col-reverse">
-        <dt class="text-sm font-medium text-gray-600">Reading time</dt>
-        <dd class="text-xs text-gray-500">3 minute</dd>
-      </div>
-    </dl>
-  </a>
-        </div>
-    
-        <!-- Card 3 -->
-        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 px-4 mb-4">
-          <!--
-    Heads up! 👋
-    
-    Custom CSS:
-      - animate-background https://github.com/markmead/hyperui/blob/main/tailwind.preset.js
-    -->
-    
-    <a
-    href="#"
-    class="relative block overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8 shadow-xl"
-  >
-    <span
-      class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"
-    ></span>
-  
-    <div class="sm:flex sm:justify-between sm:gap-4">
-      <div>
-        <h3 class="text-lg font-bold text-gray-900 sm:text-xl">
-          Building a SaaS product as a software developer
-        </h3>
-  
-        <p class="mt-1 text-xs font-medium text-gray-600">By John Doe</p>
-      </div>
-  
-      <div class="hidden sm:block sm:shrink-0">
-        <img
-          alt=""
-          src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
-          class="size-16 rounded-lg object-cover shadow-sm"
-        />
-      </div>
-    </div>
-  
-    <div class="mt-4">
-      <p class="text-pretty text-sm text-gray-500">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. At velit illum provident a, ipsa
-        maiores deleniti consectetur nobis et eaque.
-      </p>
-    </div>
-  
-    <dl class="mt-6 flex gap-4 sm:gap-6">
-      <div class="flex flex-col-reverse">
-        <dt class="text-sm font-medium text-gray-600">Published</dt>
-        <dd class="text-xs text-gray-500">31st June, 2021</dd>
-      </div>
-  
-      <div class="flex flex-col-reverse">
-        <dt class="text-sm font-medium text-gray-600">Reading time</dt>
-        <dd class="text-xs text-gray-500">3 minute</dd>
-      </div>
-    </dl>
-  </a>
-        </div>
-    
-    
-    
-        <!-- Repeat for additional cards -->
-    
-      </div>
-      <div class="flex flex-wrap mx-6 mt-3">
-        <!-- Card 1 -->
-        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 px-4 mb-4">
-          <!--
-    Heads up! 👋
-    
-    Custom CSS:
-      - animate-background https://github.com/markmead/hyperui/blob/main/tailwind.preset.js
-    -->
-    
-    <a
-    href="#"
-    class="relative block overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8 shadow-xl"
-  >
-    <span
-      class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"
-    ></span>
-  
-    <div class="sm:flex sm:justify-between sm:gap-4">
-      <div>
-        <h3 class="text-lg font-bold text-gray-900 sm:text-xl">
-          Building a SaaS product as a software developer
-        </h3>
-  
-        <p class="mt-1 text-xs font-medium text-gray-600">By John Doe</p>
-      </div>
-  
-      <div class="hidden sm:block sm:shrink-0">
-        <img
-          alt=""
-          src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
-          class="size-16 rounded-lg object-cover shadow-sm"
-        />
-      </div>
-    </div>
-  
-    <div class="mt-4">
-      <p class="text-pretty text-sm text-gray-500">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. At velit illum provident a, ipsa
-        maiores deleniti consectetur nobis et eaque.
-      </p>
-    </div>
-  
-    <dl class="mt-6 flex gap-4 sm:gap-6">
-      <div class="flex flex-col-reverse">
-        <dt class="text-sm font-medium text-gray-600">Published</dt>
-        <dd class="text-xs text-gray-500">31st June, 2021</dd>
-      </div>
-  
-      <div class="flex flex-col-reverse">
-        <dt class="text-sm font-medium text-gray-600">Reading time</dt>
-        <dd class="text-xs text-gray-500">3 minute</dd>
-      </div>
-    </dl>
-  </a>
-        </div>
-    
-        <!-- Card 2 -->
-        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 px-4 mb-4">
-          <!--
-    Heads up! 👋
-    
-    Custom CSS:
-      - animate-background https://github.com/markmead/hyperui/blob/main/tailwind.preset.js
-    -->
-    
-    <a
-    href="#"
-    class="relative block overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8 shadow-xl"
-  >
-    <span
-      class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"
-    ></span>
-  
-    <div class="sm:flex sm:justify-between sm:gap-4">
-      <div>
-        <h3 class="text-lg font-bold text-gray-900 sm:text-xl">
-          Building a SaaS product as a software developer
-        </h3>
-  
-        <p class="mt-1 text-xs font-medium text-gray-600">By John Doe</p>
-      </div>
-  
-      <div class="hidden sm:block sm:shrink-0">
-        <img
-          alt=""
-          src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
-          class="size-16 rounded-lg object-cover shadow-sm"
-        />
-      </div>
-    </div>
-  
-    <div class="mt-4">
-      <p class="text-pretty text-sm text-gray-500">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. At velit illum provident a, ipsa
-        maiores deleniti consectetur nobis et eaque.
-      </p>
-    </div>
-  
-    <dl class="mt-6 flex gap-4 sm:gap-6">
-      <div class="flex flex-col-reverse">
-        <dt class="text-sm font-medium text-gray-600">Published</dt>
-        <dd class="text-xs text-gray-500">31st June, 2021</dd>
-      </div>
-  
-      <div class="flex flex-col-reverse">
-        <dt class="text-sm font-medium text-gray-600">Reading time</dt>
-        <dd class="text-xs text-gray-500">3 minute</dd>
-      </div>
-    </dl>
-  </a>
-        </div>
-    
-        <!-- Card 3 -->
-        <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 px-4 mb-4">
-          <!--
-    Heads up! 👋
-    
-    Custom CSS:
-      - animate-background https://github.com/markmead/hyperui/blob/main/tailwind.preset.js
-    -->
-    
-    <a
-    href="#"
-    class="relative block overflow-hidden rounded-lg border border-gray-100 p-4 sm:p-6 lg:p-8 shadow-xl"
-  >
-    <span
-      class="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"
-    ></span>
-  
-    <div class="sm:flex sm:justify-between sm:gap-4">
-      <div>
-        <h3 class="text-lg font-bold text-gray-900 sm:text-xl">
-          Building a SaaS product as a software developer
-        </h3>
-  
-        <p class="mt-1 text-xs font-medium text-gray-600">By John Doe</p>
-      </div>
-  
-      <div class="hidden sm:block sm:shrink-0">
-        <img
-          alt=""
-          src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
-          class="size-16 rounded-lg object-cover shadow-sm"
-        />
-      </div>
-    </div>
-  
-    <div class="mt-4">
-      <p class="text-pretty text-sm text-gray-500">
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. At velit illum provident a, ipsa
-        maiores deleniti consectetur nobis et eaque.
-      </p>
-    </div>
-  
-    <dl class="mt-6 flex gap-4 sm:gap-6">
-      <div class="flex flex-col-reverse">
-        <dt class="text-sm font-medium text-gray-600">Published</dt>
-        <dd class="text-xs text-gray-500">31st June, 2021</dd>
-      </div>
-  
-      <div class="flex flex-col-reverse">
-        <dt class="text-sm font-medium text-gray-600">Reading time</dt>
-        <dd class="text-xs text-gray-500">3 minute</dd>
-      </div>
-    </dl>
-  </a>
-        </div>
-    
-    
-    
-        <!-- Repeat for additional cards -->
-    
-      </div>
-    </div>
-  </section>
 
   <hr>
   <section class="">
@@ -481,7 +124,7 @@
           <h3 class="mx-auto mt-4 max-w-xl sm:text-sm/relaxed mb-2">
             Our Happy
           </h3>
-  
+
           <span
             class="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
             Customers</span>
@@ -489,476 +132,149 @@
         </div>
       </div>
     </div>
-   <!--
+    <!--
   Heads up! 👋
 
   This component comes with some `rtl` classes. Please remove them if they are not needed in your project.
 -->
 
-<link href="https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/keen-slider.min.css" rel="stylesheet" />
 
-<script type="module">
-  import KeenSlider from 'https://cdn.jsdelivr.net/npm/keen-slider@6.8.6/+esm'
+    <section class="bg-white">
+      <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+        <h3 class="text-center text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+          Read trusted reviews from our customers
+        </h3>
 
-  const keenSlider = new KeenSlider(
-    '#keen-slider',
-    {
-      loop: true,
-      slides: {
-        origin: 'center',
-        perView: 1.25,
-        spacing: 16,
-      },
-      breakpoints: {
-        '(min-width: 1024px)': {
-          slides: {
-            origin: 'auto',
-            perView: 1.5,
-            spacing: 32,
-          },
-        },
-      },
-    },
-    []
-  )
+        <div class="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8">
 
-  const keenSliderPrevious = document.getElementById('keen-slider-previous')
-  const keenSliderNext = document.getElementById('keen-slider-next')
 
-  const keenSliderPreviousDesktop = document.getElementById('keen-slider-previous-desktop')
-  const keenSliderNextDesktop = document.getElementById('keen-slider-next-desktop')
+          {% for feedback in feedbacks %}
 
-  keenSliderPrevious.addEventListener('click', () => keenSlider.prev())
-  keenSliderNext.addEventListener('click', () => keenSlider.next())
+          <blockquote class="rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8">
+            <div class="flex items-center gap-4">
+              <i class="fa-solid fa-user text-4xl"></i>
 
-  keenSliderPreviousDesktop.addEventListener('click', () => keenSlider.prev())
-  keenSliderNextDesktop.addEventListener('click', () => keenSlider.next())
-</script>
+              <div>
+                <div class="flex justify-center gap-0.5 text-green-500">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path
+                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path
+                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path
+                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path
+                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path
+                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                </div>
 
-<section class="bg-gray-50">
-  <div class="mx-auto max-w-[1340px] px-4 py-12 sm:px-6 lg:me-0 lg:py-16 lg:pe-0 lg:ps-8 xl:py-24">
-    <div class="grid grid-cols-1 gap-8 lg:grid-cols-3 lg:items-center lg:gap-16">
-      <div class="max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
-        <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-          Don't just take our word for it...
-        </h2>
+                <p class="mt-0.5 text-lg font-medium text-gray-900">{{feedback.name}}</p>
+              </div>
+            </div>
 
-        <p class="mt-4 text-gray-700">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas veritatis illo placeat
-          harum porro optio fugit a culpa sunt id!
-        </p>
+            <p class="mt-4 text-gray-700">
+              {{feedback.message}}
+            </p>
+          </blockquote>
 
-        <div class="hidden lg:mt-8 lg:flex lg:gap-4">
-          <button
-            aria-label="Previous slide"
-            id="keen-slider-previous-desktop"
-            class="rounded-full border border-indigo-600 p-3 text-indigo-600 transition hover:bg-indigo-600 hover:text-white"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="size-5 rtl:rotate-180"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M15.75 19.5L8.25 12l7.5-7.5"
-              />
-            </svg>
-          </button>
+          {% endfor %}
 
-          <button
-            aria-label="Next slide"
-            id="keen-slider-next-desktop"
-            class="rounded-full border border-indigo-600 p-3 text-indigo-600 transition hover:bg-indigo-600 hover:text-white"
-          >
-            <svg
-              class="size-5 rtl:rotate-180"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M9 5l7 7-7 7"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-              />
-            </svg>
-          </button>
+
+
         </div>
       </div>
+    </section>
 
-      <div class="-mx-6 lg:col-span-2 lg:mx-0">
-        <div id="keen-slider" class="keen-slider">
-          <div class="keen-slider__slide">
-            <blockquote
-              class="flex h-full flex-col justify-between bg-white p-6 shadow-sm sm:p-8 lg:p-12"
-            >
-              <div>
-                <div class="flex gap-0.5 text-indigo-500">
-                  <svg
-                    class="h-5 w-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                    />
-                  </svg>
-
-                  <svg
-                    class="h-5 w-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                    />
-                  </svg>
-
-                  <svg
-                    class="h-5 w-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                    />
-                  </svg>
-
-                  <svg
-                    class="h-5 w-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                    />
-                  </svg>
-
-                  <svg
-                    class="h-5 w-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                    />
-                  </svg>
-                </div>
-
-                <div class="mt-4">
-                  <span class="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-3xl sm:text-3xl">Stayin' Alive</span>
-
-                  <p class="mt-4 leading-relaxed text-gray-700">
-                    No, Rose, they are not breathing. And they have no arms or legs … Where are
-                    they? You know what? If we come across somebody with no arms or legs, do we
-                    bother resuscitating them? I mean, what quality of life do we have there?
-                  </p>
-                </div>
-              </div>
-
-              <footer class="mt-4 text-sm font-medium text-gray-700 sm:mt-6">
-                &mdash; Michael Scott
-              </footer>
-            </blockquote>
-          </div>
-
-          <div class="keen-slider__slide">
-            <blockquote
-              class="flex h-full flex-col justify-between bg-white p-6 shadow-sm sm:p-8 lg:p-12"
-            >
-              <div>
-                <div class="flex gap-0.5 text-indigo-500">
-                  <svg
-                    class="h-5 w-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                    />
-                  </svg>
-
-                  <svg
-                    class="h-5 w-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                    />
-                  </svg>
-
-                  <svg
-                    class="h-5 w-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                    />
-                  </svg>
-
-                  <svg
-                    class="h-5 w-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                    />
-                  </svg>
-
-                  <svg
-                    class="h-5 w-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                    />
-                  </svg>
-                </div>
-
-                <div class="mt-4">
-                  <span class="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-3xl sm:text-3xl">Stayin' Alive</span>
-
-                  <p class="mt-4 leading-relaxed text-gray-700">
-                    No, Rose, they are not breathing. And they have no arms or legs … Where are
-                    they? You know what? If we come across somebody with no arms or legs, do we
-                    bother resuscitating them? I mean, what quality of life do we have there?
-                  </p>
-                </div>
-              </div>
-
-              <footer class="mt-4 text-sm font-medium text-gray-700 sm:mt-6">
-                &mdash; Michael Scott
-              </footer>
-            </blockquote>
-          </div>
-
-          <div class="keen-slider__slide">
-            <blockquote
-              class="flex h-full flex-col justify-between bg-white p-6 shadow-sm sm:p-8 lg:p-12"
-            >
-              <div>
-                <div class="flex gap-0.5 text-indigo-500">
-                  <svg
-                    class="h-5 w-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                    />
-                  </svg>
-
-                  <svg
-                    class="h-5 w-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                    />
-                  </svg>
-
-                  <svg
-                    class="h-5 w-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                    />
-                  </svg>
-
-                  <svg
-                    class="h-5 w-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                    />
-                  </svg>
-
-                  <svg
-                    class="h-5 w-5"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
-                    />
-                  </svg>
-                </div>
-
-                <div class="mt-4">
-                  <span class="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-3xl sm:text-3xl">Stayin' Alive</span>
-
-                  <p class="mt-4 leading-relaxed text-gray-700">
-                    No, Rose, they are not breathing. And they have no arms or legs … Where are
-                    they? You know what? If we come across somebody with no arms or legs, do we
-                    bother resuscitating them? I mean, what quality of life do we have there?
-                  </p>
-                </div>
-              </div>
-
-              <footer class="mt-4 text-sm font-medium text-gray-700 sm:mt-6">
-                &mdash; Michael Scott
-              </footer>
-            </blockquote>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="mt-8 flex justify-center gap-4 lg:hidden">
-      <button
-        aria-label="Previous slide"
-        id="keen-slider-previous"
-        class="rounded-full border border-indigo-600 p-4 text-indigo-600 transition hover:bg-indigo-600 hover:text-white"
-      >
-        <svg
-          class="size-5 -rotate-180 transform"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
-        </svg>
-      </button>
-
-      <button
-        aria-label="Next slide"
-        id="keen-slider-next"
-        class="rounded-full border border-indigo-600 p-4 text-indigo-600 transition hover:bg-indigo-600 hover:text-white"
-      >
-        <svg
-          class="h-5 w-5"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
-        </svg>
-      </button>
-    </div>
-  </div>
-</section>
-  </section>
-
-  <!-- Contact Form -->
-  <!--
+    <!-- Contact Form -->
+    <!--
   Heads up! 👋
 
   Plugins:
     - @tailwindcss/forms
 -->
-  <hr>
-  <section class="">
-    <div class="container">
-      <div class="row justify-content-md-center mt-5">
-        <div class="mx-auto max-w-3xl text-center">
-          <h3 class="mx-auto mt-4 max-w-xl sm:text-sm/relaxed mb-2">
-            Have Queries?
-          </h3>
-  
-          <span
-            class="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
-            Contact Us</span>
-          <hr class="w-50 mx-auto mt-2 mb-5 mb-xl-9 border-dark-subtle">
-        </div>
-      </div>
-    </div>
-    <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
-        <div class="lg:col-span-2 lg:py-12">
-          <p class="max-w-xl text-lg">
-            At the same time, the fact that we are wholly owned and totally independent from
-            manufacturer and other group control gives you confidence that we will only recommend what
-            is right for you.
-          </p>
+    <hr>
+    <section class="">
+      <div class="container">
+        <div class="row justify-content-md-center mt-5">
+          <div class="mx-auto max-w-3xl text-center">
+            <h3 class="mx-auto mt-4 max-w-xl sm:text-sm/relaxed mb-2">
+              Have Suggestions?
+            </h3>
 
-          <div class="mt-8">
-            <a href="#"
-              class="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-3xl">
-              0151 475 4450 </a>
-            <address class="mt-2 not-italic">282 Kevin Brook, Imogeneborough, CA 58517</address>
+            <span
+              class="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-5xl">
+              Feedback</span>
+            <hr class="w-50 mx-auto mt-2 mb-5 mb-xl-9 border-dark-subtle">
           </div>
         </div>
+      </div>
+      <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
+          <div class="lg:col-span-2 lg:py-12">
+            <p class="max-w-xl text-lg">
+              We value your feedback! Please take a moment to share your thoughts with us.
+            </p>
 
-        <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
-          <form action="#" class="space-y-4">
-            <div>
-              <label class="sr-only" for="name">Name</label>
-              <input class="w-full rounded-lg border border-gray-200 p-3 text-sm" placeholder="Name" type="text"
-                id="name" />
+            <div class="mt-8">
+              <a
+                class="bg-gradient-to-r from-green-400 via-blue-500 to-purple-600 bg-clip-text text-3xl font-extrabold text-transparent sm:text-3xl">
+                81414 84998 </a>
+              <address class="mt-2 not-italic">SG Highway, Ahmedabad - 360001</address>
             </div>
+          </div>
 
-            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
+            <form action="add_feedback" method="post" class="space-y-4">
+              {% csrf_token %}
+              <div>
+                <label class="sr-only" for="name">Name</label>
+                <input class="w-full rounded-lg border border-gray-200 p-3 text-sm" name="name" placeholder="Name"
+                  type="text" id="name" required />
+              </div>
+
+
               <div>
                 <label class="sr-only" for="email">Email</label>
-                <input class="w-full rounded-lg border border-gray-200 p-3 text-sm" placeholder="Email address"
-                  type="email" id="email" />
+                <input class="w-full rounded-lg border border-gray-200 p-3 text-sm" name="email"
+                  placeholder="Email address" type="email" id="email" required />
               </div>
 
               <div>
-                <label class="sr-only" for="phone">Subject</label>
-                <input class="w-full rounded-lg border border-gray-200 p-3 text-sm" placeholder="Subject" type="text"
-                  id="phone" />
+                <label class="sr-only" for="message">Message</label>
+
+                <textarea class="w-full rounded-lg border border-gray-200 p-3 text-sm" placeholder="Message" rows="8"
+                  id="message" name="message" required></textarea>
               </div>
-            </div>
 
-
-
-            <div>
-              <label class="sr-only" for="message">Message</label>
-
-              <textarea class="w-full rounded-lg border border-gray-200 p-3 text-sm" placeholder="Message" rows="8"
-                id="message"></textarea>
-            </div>
-
-            <div class="mt-4">
-              <button type="submit"
-                class="inline-block w-full rounded-lg gradient-border px-5 py-3 font-medium text-white sm:w-auto hover:bg-gradient-to-r hover:bg-indigo-500 transition  hover:border-0">
-                Send Enquiry
-              </button>
-            </div>
-          </form>
+              <div class="mt-4">
+                <button type="submit"
+                  class="inline-block w-full rounded-lg gradient-border px-5 py-3 font-medium text-white sm:w-auto hover:bg-gradient-to-r hover:bg-indigo-500 transition  hover:border-0">
+                  Send Feedback
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
-    </div>
-</section>
-<!--Section: Contact v.2-->
+    </section>
+    <!--Section: Contact v.2-->
 
-<a class="border rounded d-inline scroll-to-top bg-indigo-600 text-white p-2 text-decoration-none" href="add-post" style="position: fixed;right: 30px;bottom: 30px;">Add Post <i class="fa-solid fa-plus"></i></a>
+    <a class="border rounded d-inline scroll-to-top bg-indigo-600 text-white p-2 text-decoration-none" href="add-post"
+      style="position: fixed;right: 30px;bottom: 30px;">Add Post <i class="fa-solid fa-plus"></i></a>
 
-  
+
 </div>
+
 <script src="https://kit.fontawesome.com/4e3436846e.js" crossorigin="anonymous"></script>
 {% endblock %}

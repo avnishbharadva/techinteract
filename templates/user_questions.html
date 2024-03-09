@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 
+{% block title %}TechInteract - {{user.username}}{% endblock %}
+
 {% block content %}
     
+    <h2>Questions - {{user.username}}</h2>
     {% for query in queries %}
     <a href="{% url 'question_detail' question_id=query.id %}">
         <h3 class="mt-0.5 text-lg font-medium text-gray-900">

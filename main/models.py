@@ -31,3 +31,10 @@ class Response(models.Model):
     query = models.ForeignKey(Query, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     is_verified = models.BooleanField(default=False)
+
+class Feedback(models.Model):
+
+    name = models.CharField(max_length=30)
+    email = models.EmailField()
+    message = models.TextField(max_length=1000)
+    created_at = models.DateTimeField(auto_now_add=True)

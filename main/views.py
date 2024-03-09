@@ -12,8 +12,9 @@ from django.contrib import auth
 def index(request):
 
     # queries = Query.objects.select_related('tag','user').all()[:6]
-    queries = Query.objects.select_related('tag','user').order_by('-created_at')[:6]
-    return render(request, 'index.html', {'queries':queries})
+    queries = Query.objects.select_related('tag','user').order_by('-created_at')[:12]
+    feedbacks = Feedback.objects.all()
+    return render(request, 'index.html', {'queries':queries,'feedbacks':feedbacks})
 
 def register(request):
 
@@ -98,6 +99,12 @@ def add_post(request):
     
 def view_question(request):
 
+    if request.GET.get('search_question'):
+
+        data = Query.objects.all()
+        data = data.filter(query__icontains = request.GET.get('search_question'))
+        return render(request, 'questions.html', {'queries':data})
+
     queries = Query.objects.select_related('tag','user').all()
     # print(queries[0].tag.id)
     return render(request, 'questions.html', {'queries':queries})
@@ -112,14 +119,21 @@ def question_detail(request, question_id):
 
 def all_tags(request):
 
+    if request.GET.get('search_tag'):
+
+        data = Tag.objects.all()
+        data = data.filter(tag_name__icontains = request.GET.get('search_tag'))
+        return render(request, 'tags.html', {'tags':data})
+    
     tags = Tag.objects.all()
     return render(request, 'tags.html', {'tags':tags})
 
 def tag_detail(request, tag_id):
 
     queries = Query.objects.select_related('tag','user').filter(tag_id=tag_id)
+    tag = Tag.objects.get(id=tag_id)
     # print("Tag by Query : ",queries)
-    return render(request, "query_by_tag.html", {'queries': queries})
+    return render(request, "query_by_tag.html", {'queries': queries,'tag':tag})
 
 def add_response(request):
 
@@ -170,4 +184,43 @@ def fetch_users(request):
 def user_questions(request,user_id):
 
     queries = Query.objects.select_related('tag','user').filter(user_id=user_id)
-    return render(request, 'user_questions.html', {'queries':queries})
+    user = Users.objects.get(id=user_id)
+    return render(request, 'user_questions.html', {'queries':queries,'user':user})
+
+def delete_question(request, question_id):
+
+    query = Query.objects.get(id=question_id)
+    query.delete()
+    user = Users.objects.get(id=request.user.id)
+    old_query_counter = user.total_query
+    new_query_counter = old_query_counter - 1
+    user.total_query = new_query_counter
+    user.save()
+    return redirect('profile')
+
+def update_question(request, question_id):
+
+    data = Query.objects.select_related('tag','user').get(id=question_id)
+    
+    if request.method == "POST":
+
+        query = request.POST['query']
+        desc = request.POST['desc']
+
+        data.query = query
+        data.desc = desc
+        data.save()
+
+        return redirect(f'/question/{question_id}')
+
+    return render(request, 'update_post.html', {'query':data})
+
+def add_feedback(request):
+
+    name = request.POST['name']
+    email = request.POST['email']
+    message = request.POST['message']
+
+    feedback = Feedback.objects.create(name=name,email=email,message=message)
+    # messages.success(request, 'Feedback Added Successfully...')
+    return redirect('/')

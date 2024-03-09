@@ -1,9 +1,20 @@
 {% extends 'base.html' %}
 
+{% block title %}TechInteract - All Questions{% endblock %}
+
 {% block content %}
 {% load humanize %}
     
+    
     <div class="container">
+
+      <div class="search-bar mt-5">
+        <form action="" method="get">
+        <input type="search" name="search_question" id="" placeholder="Search Questions">
+        <input type="submit" class="bg-indigo-500 text-white hover:bg-indigo-700 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0" value="Search">
+      </form>
+      </div>
+
         <h2 class="text-2xl text-center font-bold my-3">View All Questions</h2>
     {% for query in queries %}
     <div class="w-full ms-6 mb-4">

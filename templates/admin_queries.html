@@ -1,5 +1,6 @@
 {% extends 'adminbase.html' %}
 
+{% block title %}Admin - All Queries{% endblock %}
 
 {% block admin %}
     
@@ -12,8 +13,7 @@
             <td>{{query.tag.tag_name}}</td>
             <td>{{query.user.username}}</td>
             <td>{{query.created_at}}</td>
-            <td><button>Update</button></td>
-            <td><button>Delete</button></td>
+            <td><a href="{% url 'delete_question' question_id=query.id user_id=query.user.id %}"><button>Delete</button></a></td>
         </tr>
     {% endfor %}
 </table>

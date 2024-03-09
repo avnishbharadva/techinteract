@@ -1,0 +1,21 @@
+{% extends 'adminbase.html' %}
+
+{% block title %}Admin - All Feedbacks{% endblock %}
+
+{% block admin %}
+    
+    <table border="10">
+    {% for feedback in feedbacks %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{feedback.name}}</td>
+            <td>{{feedback.email}}</td>
+            <td>{{feedback.message}}</td>
+            <td>{{feedback.created_at}}</td>
+            <td><a href="{% url 'delete_feedback' feedback_id=feedback.id %}"><button>Delete</button></a></td>
+        </tr>
+    {% endfor %}
+</table>
+        
+{% endblock %}
+    

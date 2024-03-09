@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% block title %}TechInteract - My Profile{% endblock %}
+
 {% block content %}
 {% load humanize %}
 
@@ -94,6 +96,11 @@
             <span class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600">
               Tag: {{post.tag.tag_name}}
             </span>
+          </div>
+
+          <div>
+            <a href="{% url 'update_question' question_id=post.id %}"><button>Update</button></a>
+            <a href="{% url 'delete_question' question_id=post.id %}"><button>Delete</button></a>
           </div>
         </div>
       </article>

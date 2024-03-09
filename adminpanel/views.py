@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Tag
 from main.models import *
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -45,3 +46,67 @@ def admin_users(request):
 
     users = Users.objects.all()
     return render(request, 'admin_users.html', {'users':users})
+
+def delete_question(request, question_id,user_id):
+
+    query = Query.objects.get(id=question_id)
+    query.delete()
+    user = Users.objects.get(id=user_id)
+    old_query_counter = user.total_query
+    new_query_counter = old_query_counter - 1
+    user.total_query = new_query_counter
+    user.save()
+    return redirect('admin_queries')
+
+def delete_response(request, response_id, user_id):
+
+    response = Response.objects.get(id=response_id)
+    response.delete()
+    user = Users.objects.get(id=user_id)
+    old_response_counter = user.total_response
+    new_response_counter = old_response_counter - 1
+    user.total_response = new_response_counter
+    user.save()
+    return redirect('admin_responses')
+
+def delete_user(request, user_id):
+
+    user = Users.objects.get(id=user_id)
+    auser = User.objects.get(id=user_id)
+    user.delete()
+    auser.delete()
+    return redirect('admin_users')
+
+def delete_tag(request, tag_id):
+
+    tag = Tag.objects.get(id=tag_id)
+    tag.delete()
+    return redirect('admin_tags')
+
+def update_tag(request, tag_id):
+
+    tag = Tag.objects.get(id=tag_id)
+
+    if request.method == "POST":
+
+        tag_name = request.POST['tag_name']
+        tag_desc = request.POST['tag_desc']
+
+        tag.tag_name = tag_name
+        tag.tag_desc = tag_desc
+        tag.save()
+
+        return redirect('admin_tags')
+    
+    return render(request, 'update_tag.html', {'tag':tag})
+
+def admin_feedbacks(request):
+
+    feedbacks = Feedback.objects.all()
+    return render(request, 'admin_feedbacks.html', {'feedbacks':feedbacks})
+
+def delete_feedback(request,feedback_id):
+
+    feedback = Feedback.objects.get(id=feedback_id)
+    feedback.delete()
+    return redirect('admin_feedbacks')

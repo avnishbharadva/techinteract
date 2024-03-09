@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
+  <title>{% block title %}TechInteract{% endblock %}</title>
   <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"> -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -150,6 +150,11 @@
           <a href="/"><strong class="font-medium text-gray-900"> Home </strong></a>
 
           <ul class="mt-6 space-y-1">
+
+            <li>
+              <a class="text-gray-700 transition hover:text-gray-700/75" href="add-post"> Add Post </a>
+            </li>
+
             <li>
               <a class="text-gray-700 transition hover:text-gray-700/75" href="questions"> Questions </a>
             </li>
@@ -169,51 +174,12 @@
           </ul>
         </div>
 
-        <!-- <div>
-          <strong class="font-medium text-gray-900"> Tags </strong> -->
-
-        <!-- <ul class="mt-6 space-y-1">
-            <li>
-              <a class="text-gray-700 transition hover:text-gray-700/75" href="#"> About </a>
-            </li>
-
-            <li>
-              <a class="text-gray-700 transition hover:text-gray-700/75" href="#"> Careers </a>
-            </li>
-
-            <li>
-              <a class="text-gray-700 transition hover:text-gray-700/75" href="#"> History </a>
-            </li>
-
-            <li>
-              <a class="text-gray-700 transition hover:text-gray-700/75" href="#"> Our Team </a>
-            </li>
-          </ul> -->
-        <!-- </div> -->
-
-        <!-- <div>
-          <strong class="font-medium text-gray-900"> Mentors </strong> -->
-
-        <!-- <ul class="mt-6 space-y-1">
-            <li>
-              <a class="text-gray-700 transition hover:text-gray-700/75" href="#"> FAQs </a>
-            </li>
-
-            <li>
-              <a class="text-gray-700 transition hover:text-gray-700/75" href="#"> Contact </a>
-            </li>
-
-            <li>
-              <a class="text-gray-700 transition hover:text-gray-700/75" href="#"> Live Chat </a>
-            </li>
-          </ul> -->
-        <!-- </div> -->
       </div>
     </div>
 
     <div class="mt-16 border-t border-gray-100 pt-8">
       <p class="text-center text-xs/relaxed text-gray-500">
-        © TechInteract 2024. All rights reserved.
+        © <a href="/">TechInteract</a> 2024. All rights reserved.
 
         <br />
       </p>
