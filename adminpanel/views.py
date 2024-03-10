@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Tag
+from .models import *
 from main.models import *
 from django.contrib.auth.models import User
 
@@ -110,3 +110,26 @@ def delete_feedback(request,feedback_id):
     feedback = Feedback.objects.get(id=feedback_id)
     feedback.delete()
     return redirect('admin_feedbacks')
+
+def admin_login(request):
+
+    if request.method == "POST":
+
+        email = request.POST['email']
+        password = request.POST['password']
+
+        if Admin.objects.filter(email=email).exists():
+
+            print("email done")
+            if Admin.objects.get(email=email).password == password:
+                print("Login done")
+            else:
+                print("PAssword wrong")
+        else:
+            print("Invalid credentials")
+
+    return render(request, 'admin_login.html')
+
+def admin_register(request):
+
+    return render(request, 'admin_register.html')
