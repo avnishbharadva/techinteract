@@ -1,0 +1,68 @@
+{% extends 'adminbase.html' %}
+
+
+{% block admin %}
+
+
+<div class="">
+    <!--
+  Heads up! 👋
+
+  Plugins:
+    - @tailwindcss/forms
+-->
+
+    <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-lg">
+
+
+            <form action="" method="post" class="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8">
+                {% csrf_token %}
+                <p class="text-center text-lg font-medium">Add Admin</p>
+
+                <div>
+                    <label for="email" class="sr-only">Admin Name</label>
+
+                    <div class="relative">
+                        <input type="text" class="w-full rounded-lg border-2 border-indigo-400 p-4 pe-12 text-sm shadow-sm"
+                            id="name" placeholder="Name" name="name" required />
+
+
+                    </div>
+                </div>
+
+                <div>
+                    <label for="password" class="sr-only">Admin Description</label>
+
+                    <div class="relative">
+                        <input type="text" class="w-full rounded-lg border-2 border-indigo-400 p-4 pe-12 text-sm shadow-sm"
+                            id="tag_desc"
+                            placeholder="Email"
+                            name="email" required />
+
+
+                    </div>
+                </div>
+
+                <div>
+                    <label for="password" class="sr-only">Admin Password</label>
+
+                    <div class="relative">
+                        <input type="password" class="w-full rounded-lg border-2 border-indigo-400 p-4 pe-12 text-sm shadow-sm"
+                            placeholder="Set Password"
+                            name="password" required />
+
+
+                    </div>
+                </div>
+
+                <button type="submit"
+                    class="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white">
+                    Save
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

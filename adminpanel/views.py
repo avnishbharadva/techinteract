@@ -7,7 +7,10 @@ from django.contrib.auth.models import User
 
 def index(request):
 
-    return render(request, 'adminindex.html')
+    if request.session.get('admin_logged_in'):
+        return render(request, 'adminindex.html')
+    else:
+        return redirect('admin_login')
 
 def admin_profile(request):
 
@@ -123,6 +126,8 @@ def admin_login(request):
             print("email done")
             if Admin.objects.get(email=email).password == password:
                 print("Login done")
+                request.session['admin_logged_in'] = True
+                return redirect('/admin-panel')
             else:
                 print("PAssword wrong")
         else:
@@ -132,4 +137,19 @@ def admin_login(request):
 
 def admin_register(request):
 
+    if request.method == "POST":
+
+        name = request.POST['name']
+        email = request.POST['email']
+        password = request.POST['password']
+
+        admin = Admin.objects.create(name=name,email=email,password=password)
+
+        return redirect('admin_register')
+
     return render(request, 'admin_register.html')
+
+def admin_logout(request):
+
+    del request.session['admin_logged_in']
+    return redirect('admin_login')

@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 # from django.contrib.auth import authenticate,login,logout
 from django.contrib import auth
+from django.db.models import OuterRef
 
 # Create your views here.
 
@@ -178,14 +179,16 @@ def user_points(request, user_id,question_id,res_id):
 
 def fetch_users(request):
 
-    users = Users.objects.all()
-    return render(request, 'users.html', {'users':users})
+    users = Users.objects.exclude(id=request.user.id)
+    queries = Query.objects.select_related('tag','user').all()
+    # user_questions = (Query.objects.filter(user=OuterRef('pk')).order_by('-created_at')[:2])
+    return render(request, 'users.html', {'allusers':users,'queries':queries})
 
 def user_questions(request,user_id):
 
     queries = Query.objects.select_related('tag','user').filter(user_id=user_id)
     user = Users.objects.get(id=user_id)
-    return render(request, 'user_questions.html', {'queries':queries,'user':user})
+    return render(request, 'user_questions.html', {'queries':queries,'puser':user})
 
 def delete_question(request, question_id):
 

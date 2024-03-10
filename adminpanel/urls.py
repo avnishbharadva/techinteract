@@ -18,4 +18,5 @@ urlpatterns = [
     path('addtag', views.addtag, name="addtag"),
     path('admin-login', views.admin_login, name="admin_login"),
     path('admin-register', views.admin_register, name="admin_register"),
+    path('admin_logout', views.admin_logout, name="admin_logout"),
 ]
