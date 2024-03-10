@@ -6,26 +6,54 @@
 
 
 <div class="">
-    <div class="">
-        <p class="">Update Tag</p>
-    </div>
-    <div class="">
-        <form action="" method="post">
-            {% csrf_token %}
-            <div class="mb-3"><label class="form-label" for="tag_name"><strong>Tag Name</strong></label><input
-                    class="" type="text" id="tag_name" value="{{tag.tag_name}}" placeholder="Html" name="tag_name" required></div>
+    <!--
+  Heads up! 👋
 
-            <div class="">
-                <div class="mb-3"><label class="" for="tag_desc"><strong>Tag
-                            Description</strong></label><input class="form-control" value="{{tag.tag_desc}}" type="text" id="tag_desc"
-                        placeholder="The HyperText Markup Language or HTML is the standard markup language for documents designed to be displayed in a web browser. It defines the content and structure of web content. It is often assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript."
-                        name="tag_desc" required></div>
-            </div>
+  Plugins:
+    - @tailwindcss/forms
+-->
+
+    <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+        <div class="mx-auto max-w-lg">
+           
 
 
-            <div class="mb-3"><input class="" type="submit" value="Update"></div>
-        </form>
+            <form method="post" class="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8">
+                {% csrf_token %}
+                <p class="text-center text-lg font-medium">Update Tag</p>
+
+                <div>
+                    <label for="email" class="sr-only">Tag Name</label>
+
+                    <div class="relative">
+                        <input type="text" class="w-full rounded-lg border-2 border-indigo-400 p-4 pe-12 text-sm shadow-sm" value="{{tag.tag_name}}"
+                            id="tag_name" placeholder="Html" name="tag_name" required />
+
+
+                    </div>
+                </div>
+
+                <div>
+                    <label for="password" class="sr-only">Tag Description</label>
+
+                    <div class="relative">
+                        <input type="text" class="w-full rounded-lg border-2 border-indigo-400 p-4 pe-12 text-sm shadow-sm"
+                            id="tag_desc"
+                            placeholder="The HyperText Markup Language or HTML is the standard markup language for documents designed to be displayed in a web browser. It defines the content and structure of web content. It is often assisted by technologies such as Cascading Style Sheets (CSS) and scripting languages such as JavaScript." value="{{tag.tag_desc}}" 
+                            name="tag_desc" required />
+
+
+                    </div>
+                </div>
+
+                <button type="submit"
+                    class="block w-full rounded-lg bg-indigo-600 px-5 py-3 text-sm font-medium text-white">
+                    Update
+                </button>
+            </form>
+        </div>
     </div>
 </div>
+
 
 {% endblock %}

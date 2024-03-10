@@ -3,17 +3,42 @@
 {% block title %}TechInteract - {{user.username}}{% endblock %}
 
 {% block content %}
+{% load humanize %}
     
-    <h2>Questions - {{user.username}}</h2>
+    
+    <div class="container">
+
+     
+
+        <h2 class="text-2xl text-center font-bold my-3">Questions - {{user.username}}</h2>
     {% for query in queries %}
-    <a href="{% url 'question_detail' question_id=query.id %}">
-        <h3 class="mt-0.5 text-lg font-medium text-gray-900">
-          {{query.query}}
-        </h3>
-        <p class="text-gray-600">{{query.desc}}</p>
-      </a> 
-      <h2>{{query.tag.tag_name}}</h2>
-      <h2>{{query.created_at}}</h2>
-    {% endfor %}
+    <div class="w-full ms-6 mb-4">
+  
+        <article
+          class="hover:animate-background rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:bg-[length:400%_400%] hover:shadow-sm hover:[animation-duration:_4s]">
+          <div class="rounded-[10px] bg-white p-4 sm:p-6">
+            <time datetime="2022-10-10" class="block text-xs text-gray-500"> {{ query.created_at|naturaltime }} </time>
+  
+            <a href="{% url 'question_detail' question_id=query.id %}">
+              <h3 class="mt-0.5 text-lg font-medium text-gray-900">
+                {{query.query}}
+              </h3>
+              <p class="text-gray-600">{{query.desc}}</p>
+            </a>
+  
+            <div class="mt-4 flex flex-wrap gap-1">
+              <span class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600">
+                {{query.tag.tag_name}}
+              </span>
+  
+             
+            </div>
+          </div>
+        </article>
+      </div>
+    {% endfor%}
+</div>
+    
+ 
 {% endblock %}
     

@@ -39,7 +39,7 @@ def admin_queries(request):
 
 def admin_responses(request):
 
-    responses = Response.objects.select_related('user').all()
+    responses = Response.objects.select_related('user','query').all()
     return render(request, 'admin_responses.html', {'responses':responses})
 
 def admin_users(request):
