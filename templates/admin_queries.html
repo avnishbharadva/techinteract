@@ -3,20 +3,57 @@
 {% block title %}Admin - All Queries{% endblock %}
 
 {% block admin %}
+{% load humanize %}
     
-    <table border="10">
-    {% for query in queries %}
+<div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto ">
+        <h1 class="text-center text-2xl font-bold text-indigo-400 sm:text-3xl">All Queries List</h1>
+
+        <!--
+  Heads up! 👋
+
+  This component comes with some `rtl` classes. Please remove them if they are not needed in your project.
+-->
+
+<div class="rounded-lg border border-gray-200 mt-4">
+  <div class="overflow-x-auto rounded-t-lg">
+      <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+          <thead class="text-center">
         <tr>
-            <td>{{forloop.counter}}</td>
-            <td>{{query.query}}</td>
-            <td>{{query.desc}}</td>
-            <td>{{query.tag.tag_name}}</td>
-            <td>{{query.user.username}}</td>
-            <td>{{query.created_at}}</td>
-            <td><a href="{% url 'delete_question' question_id=query.id user_id=query.user.id %}"><button>Delete</button></a></td>
+            <th></th>
+          <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Query</th>
+          <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Description</th>
+          <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Tags</th>
+          <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Created By</th>
+          <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Created at</th>
+          <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900" colspan="2">Actions</th>
         </tr>
-    {% endfor %}
-</table>
+      </thead>
+      
+      <tbody class="divide-y divide-gray-200 text-center">
+        {% for query in queries %}
+        <tr>
+          <td class="px-4 py-2">{{forloop.counter}}</td>
+          <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{{ query.query|slice:"0:20" }}{% if query.query|length > 20 %}...{% endif %}</td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{ query.desc|slice:"0:20" }}{% if query.query|length > 20 %}...{% endif %}</td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700"><span class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600">
+            {{query.tag.tag_name}}
+          </span></td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{query.user.username}}</td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{query.created_at|naturaltime}}</td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700"><a href="{% url 'delete_question' question_id=query.id user_id=query.user.id %}" class="inline-block rounded bg-red-600 px-4 py-2 text-xs font-medium text-white hover:bg-red-700">Delete</a></td>
+        </tr>
+        {% endfor %}
+        
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+    </div>
+    </div>
+
         
 {% endblock %}
     

@@ -3,19 +3,52 @@
 {% block title %}Admin - All Tags{% endblock %}
 
 {% block admin %}
+{% load humanize %}
     
-    <table border="10">
-    {% for tag in tags %}
+<div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="mx-auto ">
+        <h1 class="text-center text-2xl font-bold text-indigo-400 sm:text-3xl">All Tags List</h1>
+
+        <!--
+  Heads up! 👋
+
+  This component comes with some `rtl` classes. Please remove them if they are not needed in your project.
+-->
+
+<div class="rounded-lg border border-gray-200 mt-4">
+  <div class="overflow-x-auto rounded-t-lg">
+      <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+          <thead class="text-center">
         <tr>
-            <td>{{forloop.counter}}</td>
-            <td>{{tag.tag_name}}</td>
-            <td>{{tag.tag_desc}}</td>
-            <td>{{tag.created_at}}</td>
-            <td><a href="{% url 'update_tag' tag_id=tag.id %}"><button>Update</button></a></td>
-            <td><a href="{% url 'delete_tag' tag_id=tag.id %}"><button>Delete</button></a></td>
+            <th></th>
+          <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Name</th>
+          <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Description</th>
+          <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">Created at</th>
+          <th class="whitespace-nowrap px-4 py-2 font-medium text-gray-900" colspan="2">Actions</th>
         </tr>
-    {% endfor %}
-</table>
+      </thead>
+      
+      <tbody class="divide-y divide-gray-200 text-center">
+      {% for tag in tags %}
+        <tr>
+          <td class="px-4 py-2">{{forloop.counter}}</td>
+          <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{{tag.tag_name}}</td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{tag.tag_desc}}</td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{tag.created_at|naturaltime}}</td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700"><a href="{% url 'update_tag' tag_id=tag.id %}"  class="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700">Update</a></td>
+          <td class="whitespace-nowrap px-4 py-2 text-gray-700"><a href="{% url 'delete_tag' tag_id=tag.id %}" class="inline-block rounded bg-red-600 px-4 py-2 text-xs font-medium text-white hover:bg-red-700">Delete</a></td>
+        </tr>
+        {% endfor %}
+        
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+    </div>
+    </div>
+
         
 {% endblock %}
     
