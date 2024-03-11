@@ -23,7 +23,7 @@
   </style>
 </head>
 
-<section class="bg-indigo-100 p-4">
+<section class=" p-4">
   <!-- Main Content -->
   <div class="container mx-auto mt-8 ">
 
@@ -48,38 +48,41 @@
     </div>
 
 
+    {% if user.is_authenticated %}
+    <div class="bg-indigo-100 p-4 mb-4 w-[100%] rounded shadow">
+      <h2 class="text-xl font-semibold mb-4">Your Answer</h2>
+      <form action="/add_response" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="query" value="{{query.id}}">
+        <textarea class="w-full h-32 p-2 border bg-indigo-100 border-indigo-600 rounded mb-4" placeholder="Type your answer here" name="response"
+         ></textarea>
+        <button type="submit"
+          class="inline-block w-full rounded-lg gradient-border px-5 py-3 font-medium text-white sm:w-auto hover:bg-gradient-to-r hover:bg-indigo-500 transition  hover:border-0">Submit
+          Answer</button>
+      </form>
+    </div>
+    {% endif %}
     <!-- Answers -->
-    <div class="bg-white p-4 rounded shadow mb-8">
+    <div class="bg-indigo-100 p-4 rounded shadow mb-8">
       <h2 class="text-xl font-semibold mb-4">Answers</h2>
       {% for response in responses %}
 
       <!-- Sample Answer with Upvote/Downvote/Mark as Correct -->
       <div class=" my-4 pb-2">
-        <!-- Upvote Button -->
-        <button class="text-green-500 hover:text-green-700 focus:outline-none">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
-          </svg>
-        </button>
+       
 
-        <!-- Display Upvote Count -->
-        <span class="text-gray-600">{{ answer.upvotes }}</span>
+     
 
         <!-- Downvote Button -->
-        <button class="text-red-500 hover:text-red-700 focus:outline-none">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-          </svg>
-        </button>
-        <!-- Display Downvote Count -->
-        <span class="text-gray-600">{{ answer.downvotes }}</span>
+     
 
         <!-- Mark as Correct Button -->
         <!-- Check Icon -->
 
+        <div class="flex">
         {%if user.id == query.user.id%}
         {%if response.is_verified == False%}
-        <button class="text-red-500 hover:text-red-700 focus:outline-none">
+        <button class="text-red-500 hover:text-red-700 focus:outline-none me-2">
           <a href="{% url 'user_points' user_id=response.user.id  question_id=response.query_id res_id=response.id%}">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 100 100">
               <!-- Circle -->
@@ -93,7 +96,7 @@
         {%endif%}
         {%endif%}
         {%if response.is_verified == True%}
-        <button class="text-red-500 hover:text-red-700 focus:outline-none">
+        <button class="text-red-500 hover:text-red-700 focus:outline-none me-2">
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 100 100">
             <!-- Circle -->
             <circle cx="50" cy="50" r="45" fill="#6575F1" stroke="#fff" stroke-width="5" />
@@ -106,7 +109,8 @@
         
 
 
-        <p class="text-gray-600">{{response.response}}</p>
+        <p class="text-gray-800">{{response.response}}</p>
+      </div>
         <div class="flex items-center mt-2">
           <div class="text-xs text-gray-500">Answered by {{response.user.username}}</div>
           <div class="ml-2 text-xs text-gray-500">{{ response.created_at|timesince }}</div>
@@ -124,20 +128,7 @@
 
     <!-- Your Answer Form -->
     
-    {% if user.is_authenticated %}
-    <div class="bg-white p-4 rounded shadow">
-      <h2 class="text-xl font-semibold mb-4">Your Answer</h2>
-      <form action="/add_response" method="post">
-        {% csrf_token %}
-        <input type="hidden" name="query" value="{{query.id}}">
-        <textarea class="w-full h-32 p-2 border rounded mb-4" placeholder="Type your answer here" name="response"
-          id="response"></textarea>
-        <button type="submit"
-          class="inline-block w-full rounded-lg gradient-border px-5 py-3 font-medium text-white sm:w-auto hover:bg-gradient-to-r hover:bg-indigo-500 transition  hover:border-0">Submit
-          Answer</button>
-      </form>
-    </div>
-    {% endif %}
+    
       
     
   </div>

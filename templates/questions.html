@@ -8,14 +8,14 @@
     
     <div class="container">
 
-      <div class="search-bar mt-5">
-        <form action="" method="get">
-        <input type="search" name="search_question" id="" placeholder="Search Questions">
+      <div class="search-bar my-5 ms-8  flex">
+        <h2 class="text-2xl text-center font-bold my-3">All Questions</h2>
+        <form action="" method="get" class="flex ms-auto">
+        <input type="search" class="w-full px-4 py-2 me-4 border-b-2 focus:outline-none focus:border-indigo-600" name="search_question" id="" placeholder="Search Questions">
         <input type="submit" class="bg-indigo-500 text-white hover:bg-indigo-700 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0" value="Search">
       </form>
       </div>
 
-        <h2 class="text-2xl text-center font-bold my-3">View All Questions</h2>
     {% for query in queries %}
     <div class="w-full ms-6 mb-4">
   
