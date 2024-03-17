@@ -60,6 +60,9 @@
       <h1 class="text-4xl font-medium text-gray-700">{{user_detail.first_name}} {{user_detail.last_name}}</h1>
       <p class="font-light text-gray-600 mt-3">{{user_detail.username}}</p>
       <button class="p-2 bg-indigo-600 text-white rounded-md mt-2" id="openPopup">Update Profile</button>
+      {% for message in messages %}
+          <p class="text-red-500 mt-3 text-2xl"> {{ message }} </p>
+      {% endfor %}
     </div>
     <div class="grid grid-cols-3 text-center mb-12 order-last md:order-first mt-20 md:mt-0">
       <div>
@@ -141,6 +144,8 @@
                     class="w-full px-4 py-2 me-4 border-b-2 focus:outline-none focus:border-indigo-600"
                     placeholder="Enter new password"
                     name="password"
+                    title="Password contain uppercase,lowercase,number,special char,password should be 8-18 length" pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#%&*?!]).{8,18}"
+                    required
                   />
         
                   
@@ -157,6 +162,8 @@
                     class="w-full px-4 py-2 me-4 border-b-2 focus:outline-none focus:border-indigo-600"
                     placeholder="Confirm new password"
                     name="cpassword"
+                    title="Password contain uppercase,lowercase,number,special char,password should be 8-18 length" pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#%&*?!]).{8,18}"
+                    required
                   />
         
                   

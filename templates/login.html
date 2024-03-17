@@ -62,7 +62,8 @@
                         <div class="col-span-6">
                             <label for="password" class="block text-sm font-medium text-gray-700"> Password </label>
 
-                            <input type="password" id="password" name="password" 
+                            <input type="password" id="password" name="password"
+                            title="Password contain uppercase,lowercase,number,special char,password should be 8-18 length" pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#%&*?!]).{8,18}"
                             class="mt-1 w-full p-2 rounded-md border-gray-200 bg-white text-sm text-gray-700 shadow-sm" required />
                         </div>
 
@@ -79,7 +80,7 @@
                         </div>
                     </form>
                     {% for message in messages %}
-                    <p class="text-red-500"> {{ message }}</p>
+                    <p class="text-red-500 text-2xl mt-2"> {{ message }}</p>
                     {% endfor %}
                 </div>
             </main>

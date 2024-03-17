@@ -243,6 +243,9 @@ def update_profile(request):
             user = User.objects.get(id=request.user.id)
             user.set_password(password)
             user.save()
+            auth.login(request, user)
+            messages.success(request, 'Password Updated Successfully')
             return redirect('profile')
         else:
+            messages.info(request, 'Password Does not Matching')
             return redirect('profile')
