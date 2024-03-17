@@ -26,9 +26,9 @@
 
         <a class="mr-5 hover:text-gray-900" href="/questions">Questions</a>
         <a class="mr-5 hover:text-gray-900" href="/tags">Tags</a>
-        <a class="mr-5 hover:text-gray-900" href="/users">Users</a>
-
+        
         {% if user.is_authenticated %}
+        <a class="mr-5 hover:text-gray-900" href="/users">Users</a>
         <a class="hover:text-gray-900" href="/profile">My Profile</a>
         {% endif %}
 

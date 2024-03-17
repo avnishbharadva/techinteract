@@ -19,4 +19,5 @@ urlpatterns = [
     path('users',views.fetch_users, name='fetch_users'),
     path('user_questions/<int:user_id>/', views.user_questions, name='user_questions'),
     path('add_feedback', views.add_feedback, name="add_feedback"),
+    path('update_profile', views.update_profile, name="update_profile"),
 ]

@@ -227,3 +227,22 @@ def add_feedback(request):
     feedback = Feedback.objects.create(name=name,email=email,message=message)
     # messages.success(request, 'Feedback Added Successfully...')
     return redirect('/')
+
+def update_profile(request):
+
+    if request.method == "POST":
+
+        password = request.POST['password']
+        cpassword = request.POST['cpassword']
+
+        if password==cpassword:
+
+            users = Users.objects.get(id=request.user.id)
+            users.password = password
+            users.save()
+            user = User.objects.get(id=request.user.id)
+            user.set_password(password)
+            user.save()
+            return redirect('profile')
+        else:
+            return redirect('profile')

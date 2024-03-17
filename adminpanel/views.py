@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from .models import *
 from main.models import *
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 # Create your views here.
 
@@ -129,10 +130,13 @@ def admin_login(request):
                 request.session['admin_logged_in'] = True
                 return redirect('/admin-panel')
             else:
+                messages.info(request, 'Password Incorrect')
                 print("PAssword wrong")
         else:
+            messages.info(request, 'Invalid Credentials')
             print("Invalid credentials")
-
+            return redirect('admin_login')
+        
     return render(request, 'admin_login.html')
 
 def admin_register(request):
