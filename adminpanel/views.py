@@ -29,7 +29,7 @@ def addtag(request):
     tag = Tag.objects.create(tag_name=tag_name, tag_desc=tag_desc)
     tag.save()
     print("Tag Added Successfully")
-    return redirect('admin-panel')
+    return redirect('admin_tags')
 
 def admin_tags(request):
 
@@ -136,7 +136,10 @@ def admin_login(request):
             messages.info(request, 'Invalid Credentials')
             print("Invalid credentials")
             return redirect('admin_login')
-        
+
+    if request.session.get('admin_logged_in'):
+        return render(request, 'adminindex.html')
+    
     return render(request, 'admin_login.html')
 
 def admin_register(request):

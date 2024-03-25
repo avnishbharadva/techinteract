@@ -34,8 +34,10 @@
         {% for query in queries %}
         <tr>
           <td class="px-4 py-2">{{forloop.counter}}</td>
-          <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{{ query.query|slice:"0:20" }}{% if query.query|length > 20 %}...{% endif %}</td>
-          <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{ query.desc|slice:"0:20" }}{% if query.query|length > 20 %}...{% endif %}</td>
+          <!-- <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{{ query.query|slice:"0:20" }}{% if query.query|length > 20 %}...{% endif %}</td> -->
+          <td class="px-4 py-2">{{query.query}}</td>
+          <!-- <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{ query.desc|slice:"0:20" }}{% if query.query|length > 20 %}...{% endif %}</td> -->
+          <td class="px-4 py-2">{{query.desc}}</td>
           <td class="whitespace-nowrap px-4 py-2 text-gray-700"><span class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600">
             {{query.tag.tag_name}}
           </span></td>

@@ -34,7 +34,8 @@
         {% for response in responses %}
         <tr>
           <td class="px-4 py-2">{{forloop.counter}}</td>
-          <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{{ response.response|slice:"0:20" }}{% if query.query|length > 20 %}...{% endif %}</td>
+          <td class="px-4 py-2">{{response.response}}</td>
+          <!-- <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{{ response.response|slice:"0:20" }}{% if query.query|length > 20 %}...{% endif %}</td> -->
           <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{response.query.query}}</td>
           <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{response.user.username}}</td>
           <td class="whitespace-nowrap px-4 py-2 text-gray-700 relative left-[40px]">

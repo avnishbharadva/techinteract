@@ -33,7 +33,9 @@
         <tr>
           <td class="px-4 py-2">{{forloop.counter}}</td>
           <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{{tag.tag_name}}</td>
-          <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{tag.tag_desc}}</td>
+          <!-- {{ query.desc|slice:"0:20" }}{% if query.query|length > 20 %}...{% endif %} -->
+          <!-- <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{ tag.tag_desc|slice:"0:100" }}{% if tag.tag_desc|length > 100 %}...{% endif %}</td> -->
+          <td class="px-4 py-2">{{tag.tag_desc}}</td>
           <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{tag.created_at|naturaltime}}</td>
           <td class="whitespace-nowrap px-4 py-2 text-gray-700"><a href="{% url 'update_tag' tag_id=tag.id %}"  class="inline-block rounded bg-indigo-600 px-4 py-2 text-xs font-medium text-white hover:bg-indigo-700">Update</a></td>
           <td class="whitespace-nowrap px-4 py-2 text-gray-700"><a href="{% url 'delete_tag' tag_id=tag.id %}" class="inline-block rounded bg-red-600 px-4 py-2 text-xs font-medium text-white hover:bg-red-700">Delete</a></td>

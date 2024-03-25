@@ -35,7 +35,8 @@
           <td class="px-4 py-2">{{forloop.counter}}</td>
           <td class="whitespace-nowrap px-4 py-2 font-medium text-gray-900">{{feedback.name}}</td>
           <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{feedback.email}}</td>
-          <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{ feedback.message|slice:"0:20" }}{% if query.query|length > 20 %}...{% endif %}</td>
+          <!-- <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{ feedback.message|slice:"0:20" }}{% if query.query|length > 20 %}...{% endif %}</td> -->
+          <td class="px-4 py-2">{{feedback.message}}</td>
           <td class="whitespace-nowrap px-4 py-2 text-gray-700">{{feedback.created_at|naturaltime}}</td>
           <td class="whitespace-nowrap px-4 py-2 text-gray-700"><a href="{% url 'delete_feedback' feedback_id=feedback.id %}" class="inline-block rounded bg-red-600 px-4 py-2 text-xs font-medium text-white hover:bg-red-700">Delete</a></td>
         </tr>
