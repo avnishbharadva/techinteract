@@ -93,6 +93,7 @@ def add_post(request):
         user.save()
         que = Query.objects.create(user_id=user_id,query=query,desc=desc,tag_id=tag.id)
         print(que)
+        messages.success(request,'Post Added Successfully')
         return redirect('add_post')
     else:
         tags = Tag.objects.all()

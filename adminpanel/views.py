@@ -151,7 +151,7 @@ def admin_register(request):
         password = request.POST['password']
 
         admin = Admin.objects.create(name=name,email=email,password=password)
-
+        messages.success(request, 'Admin Added Successfully')
         return redirect('admin_register')
 
     return render(request, 'admin_register.html')

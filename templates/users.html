@@ -14,7 +14,7 @@
         class="hover:animate-background rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:bg-[length:400%_400%] hover:shadow-sm hover:[animation-duration:_4s]">
         <div class="rounded-[10px] bg-white sm:p-6">
           <article class="">
-            <div class="flex items-center gap-4">
+            <div class="flex items-center gap-5">
               <img alt=""
                 src="https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png"
                 class="size-16 rounded-full object-cover" />
@@ -24,18 +24,17 @@
                   <h3 class="text-lg font-medium text-indigo-500" style="word-wrap: inherit; white-space: nowrap;">{{puser.first_name}} {{puser.last_name}}</h3>
                 </a>
 
-                <div class="flow-root">
-                  <ul class="-m-1 flex flex-wrap">
-                    <li class="p-1 leading-none">
-                      <a href="#" class="text-xs font-medium text-black">{{puser.total_query}} Questions </a>
+                <div class="flow-root pt-2">
+                  <ul class="-m-1">
+                    <li class="p-1 leading-none text-sm font-medium text-black">
+                      {{puser.points}} Points
                     </li>
-
-                    <li class="p-1 leading-none">
-                      <a href="#" class="text-xs font-medium text-black">{{puser.total_response}} Responses </a>
+                    <li class="p-1 leading-none text-sm font-medium text-black">
+                      {{puser.total_query}} Questions
                     </li>
-                    
-
-
+                    <li class="p-1 leading-none text-sm font-medium text-black">
+                      {{puser.total_response}} Responses
+                    </li>
                   </ul>
                 </div>
               </div>
